@@ -1,15 +1,17 @@
 #pragma once
 
-#include "cinder/app/App.h"
 #include "TuioCursor.h"
+
+using namespace ci;
+using namespace ci::tuio;
 
 namespace SecondStudy {
 
-	class TouchPoint : public ci::tuio::Cursor {
+	class TouchPoint : public Cursor {
 	public:
 		double timestamp;
 	
 		TouchPoint();
-		TouchPoint(const ci::tuio::Cursor& c);
+		TouchPoint(const Cursor& c);
 	};
 }

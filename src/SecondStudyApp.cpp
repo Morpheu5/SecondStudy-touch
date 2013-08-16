@@ -1,5 +1,15 @@
 #include "SecondStudyApp.h"
 
+#include "MeasureWidget.h"
+#include "TapGestureRecognizer.h"
+#include "PinchGestureRecognizer.h"
+
+#include "TouchPoint.h"
+#include "TouchTrace.h"
+
+#include "TapGesture.h"
+#include "PinchGesture.h"
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;

@@ -1,13 +1,15 @@
 #pragma once
 
 #include <list>
-#include "cinder/Vector.h"
-#include "TouchPoint.h"
+
+//#include "TouchPoint.h"
 
 using namespace ci;
 using namespace std;
 
 namespace SecondStudy {
+	
+	class TouchPoint;
 
 	class TouchTrace {
 		int _lifespan;

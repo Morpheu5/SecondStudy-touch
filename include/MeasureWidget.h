@@ -1,12 +1,6 @@
 #pragma once
 
-#include "cinder/Vector.h"
-#include "cinder/Rect.h"
-#include "cinder/gl/gl.h"
-
-
 #include "Widget.h"
-//#include "TouchTrace.h"
 
 using namespace ci;
 using namespace std;
@@ -41,6 +35,6 @@ namespace SecondStudy {
 		const pair<int, int>& measureSize() const { return _measureSize; }
 		
 		void toggle(pair<int, int> note);
-		void processTrace(const SecondStudy::TouchTrace &trace);
+		void processTrace(const TouchTrace &trace);
 	};
 }

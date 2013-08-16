@@ -1,7 +1,6 @@
 #include "MeasureWidget.h"
 
-#include "cinder/app/App.h"
-
+using namespace ci;
 using namespace ci::app;
 
 SecondStudy::MeasureWidget::MeasureWidget() : Widget() {

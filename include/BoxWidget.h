@@ -1,14 +1,8 @@
 #pragma once
 
-#include "cinder/Vector.h"
-#include "cinder/Rect.h"
-#include "cinder/gl/gl.h"
-
-
 #include "Widget.h"
 
 using namespace ci;
-using namespace std;
 
 namespace SecondStudy {
 

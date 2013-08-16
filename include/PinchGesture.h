@@ -2,8 +2,6 @@
 
 #include "Gesture.h"
 
-#include "cinder/Vector.h"
-
 namespace SecondStudy {
 	
 	class PinchGesture : public Gesture {

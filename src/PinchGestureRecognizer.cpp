@@ -1,12 +1,10 @@
-#include "SecondStudyApp.h"
-
-#include "TouchTrace.h"
-#include "Gesture.h"
-#include "PinchGesture.h"
-
 #include "PinchGestureRecognizer.h"
 
-#include "cinder/Vector.h"
+#include "TouchPoint.h"
+#include "TouchTrace.h"
+#include "PinchGesture.h"
+
+#include "SecondStudyApp.h"
 
 using namespace ci;
 using namespace ci::app;

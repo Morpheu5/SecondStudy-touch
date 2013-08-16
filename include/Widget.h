@@ -1,9 +1,6 @@
 #pragma once
 
-#include "cinder/Vector.h"
-
 using namespace ci;
-using namespace std;
 
 namespace SecondStudy {
 
@@ -19,10 +16,10 @@ namespace SecondStudy {
 		const unsigned long id() const { return _id; }
 
 		virtual void draw() = 0;
-		virtual bool hit(Vec2f p) = 0;
+		virtual bool hit(ci::Vec2f p) = 0;
 
-		virtual void tap(Vec2f p) = 0;
-		virtual void moveBy(Vec2f v) = 0;
+		virtual void tap(ci::Vec2f p) = 0;
+		virtual void moveBy(ci::Vec2f v) = 0;
         virtual void zoomBy(float s) = 0;
         virtual void rotateBy(float a) = 0;
 	};

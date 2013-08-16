@@ -1,13 +1,15 @@
 #include "BoxWidget.h"
 
-SecondStudy::BoxWidget::BoxWidget() : Widget() {
+using namespace ci;
+
+SecondStudy::BoxWidget::BoxWidget() : SecondStudy::Widget() {
 	_scale = 1.0f;
 	_board = Rectf(-80.0f, -60.0f, 80.0f, 60.0f);
 	_position = Vec2f(0.0f, 0.0f);
 	_angle = 0.0f;
 }
 
-SecondStudy::BoxWidget::BoxWidget(Vec2f center) : Widget(), _position(center) {
+SecondStudy::BoxWidget::BoxWidget(Vec2f center) : SecondStudy::Widget(), _position(center) {
 	_scale = 1.0f;
 	_board = Rectf(-80.0f, -60.0f, 80.0f, 60.0f);
 	_angle = 0.0f;

@@ -50,7 +50,7 @@
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		03FF69B5EEFE4D7787EB57B6 /* OscListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscListener.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/OscListener.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		1155F1ACA17E465AB2B526DD /* SecondStudy_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SecondStudy_Prefix.pch; sourceTree = "<group>"; };
+		1155F1ACA17E465AB2B526DD /* SecondStudy_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondStudy_Prefix.pch; sourceTree = "<group>"; };
 		1371025E487249FE8D885697 /* OscMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscMessage.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/OscMessage.cpp; sourceTree = "<group>"; };
 		17374499CD914344B1CA9A7B /* IpEndpointName.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = IpEndpointName.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/ip/IpEndpointName.cpp; sourceTree = "<group>"; };
 		19EEC8935B10423C98F4D85F /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscTypes.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscTypes.h; sourceTree = "<group>"; };
@@ -59,24 +59,24 @@
 		298CEBF3BDD5499E944C55B2 /* OscReceivedElements.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscReceivedElements.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscReceivedElements.cpp; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2C5B7D6017BCE4C8005A5471 /* BoxWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoxWidget.cpp; path = ../src/BoxWidget.cpp; sourceTree = "<group>"; };
-		2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PinchGestureRecognizer.cpp; path = ../src/PinchGestureRecognizer.cpp; sourceTree = "<group>"; };
-		2C5B7D6217BCE4C8005A5471 /* TapGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TapGestureRecognizer.cpp; path = ../src/TapGestureRecognizer.cpp; sourceTree = "<group>"; };
-		2C5B7D6317BCE4C8005A5471 /* Widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.cpp; path = ../src/Widget.cpp; sourceTree = "<group>"; };
-		2C5B7D6817BCEF54005A5471 /* BoxWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxWidget.h; path = ../include/BoxWidget.h; sourceTree = "<group>"; };
-		2C5B7D6917BCEF54005A5471 /* PinchGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinchGesture.h; path = ../include/PinchGesture.h; sourceTree = "<group>"; };
-		2C5B7D6A17BCEF54005A5471 /* PinchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinchGestureRecognizer.h; path = ../include/PinchGestureRecognizer.h; sourceTree = "<group>"; };
-		2C5B7D6B17BCEF54005A5471 /* Widget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Widget.h; path = ../include/Widget.h; sourceTree = "<group>"; };
-		2C5B7D6C17BD0DE9005A5471 /* MeasureWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MeasureWidget.h; path = ../include/MeasureWidget.h; sourceTree = "<group>"; };
-		2C5B7D6D17BD0E41005A5471 /* MeasureWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeasureWidget.cpp; path = ../src/MeasureWidget.cpp; sourceTree = "<group>"; };
-		2C7C4B4B17BE25DC0057FC57 /* MusicStrokeGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MusicStrokeGesture.h; path = ../include/MusicStrokeGesture.h; sourceTree = "<group>"; };
-		2C7C4B4C17BE28540057FC57 /* MusicStrokeGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MusicStrokeGestureRecognizer.h; path = ../include/MusicStrokeGestureRecognizer.h; sourceTree = "<group>"; };
-		2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicStrokeGestureRecognizer.cpp; path = ../src/MusicStrokeGestureRecognizer.cpp; sourceTree = "<group>"; };
-		2C7C4B4F17BE2DF10057FC57 /* TouchTrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchTrace.cpp; path = ../src/TouchTrace.cpp; sourceTree = "<group>"; };
-		2C7C4B5117BE2F800057FC57 /* TouchPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchPoint.cpp; path = ../src/TouchPoint.cpp; sourceTree = "<group>"; };
-		2C7C4B5B17BE38FA0057FC57 /* TapGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TapGesture.cpp; path = ../src/TapGesture.cpp; sourceTree = "<group>"; };
-		2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PinchGesture.cpp; path = ../src/PinchGesture.cpp; sourceTree = "<group>"; };
-		2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicStrokeGesture.cpp; path = ../src/MusicStrokeGesture.cpp; sourceTree = "<group>"; };
+		2C5B7D6017BCE4C8005A5471 /* BoxWidget.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = BoxWidget.cpp; path = ../src/BoxWidget.cpp; sourceTree = "<group>"; };
+		2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PinchGestureRecognizer.cpp; path = ../src/PinchGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C5B7D6217BCE4C8005A5471 /* TapGestureRecognizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TapGestureRecognizer.cpp; path = ../src/TapGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C5B7D6317BCE4C8005A5471 /* Widget.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Widget.cpp; path = ../src/Widget.cpp; sourceTree = "<group>"; };
+		2C5B7D6817BCEF54005A5471 /* BoxWidget.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = BoxWidget.h; path = ../include/BoxWidget.h; sourceTree = "<group>"; };
+		2C5B7D6917BCEF54005A5471 /* PinchGesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = PinchGesture.h; path = ../include/PinchGesture.h; sourceTree = "<group>"; };
+		2C5B7D6A17BCEF54005A5471 /* PinchGestureRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = PinchGestureRecognizer.h; path = ../include/PinchGestureRecognizer.h; sourceTree = "<group>"; };
+		2C5B7D6B17BCEF54005A5471 /* Widget.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Widget.h; path = ../include/Widget.h; sourceTree = "<group>"; };
+		2C5B7D6C17BD0DE9005A5471 /* MeasureWidget.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = MeasureWidget.h; path = ../include/MeasureWidget.h; sourceTree = "<group>"; };
+		2C5B7D6D17BD0E41005A5471 /* MeasureWidget.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MeasureWidget.cpp; path = ../src/MeasureWidget.cpp; sourceTree = "<group>"; };
+		2C7C4B4B17BE25DC0057FC57 /* MusicStrokeGesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = MusicStrokeGesture.h; path = ../include/MusicStrokeGesture.h; sourceTree = "<group>"; };
+		2C7C4B4C17BE28540057FC57 /* MusicStrokeGestureRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = MusicStrokeGestureRecognizer.h; path = ../include/MusicStrokeGestureRecognizer.h; sourceTree = "<group>"; };
+		2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MusicStrokeGestureRecognizer.cpp; path = ../src/MusicStrokeGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C7C4B4F17BE2DF10057FC57 /* TouchTrace.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TouchTrace.cpp; path = ../src/TouchTrace.cpp; sourceTree = "<group>"; };
+		2C7C4B5117BE2F800057FC57 /* TouchPoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TouchPoint.cpp; path = ../src/TouchPoint.cpp; sourceTree = "<group>"; };
+		2C7C4B5B17BE38FA0057FC57 /* TapGesture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TapGesture.cpp; path = ../src/TapGesture.cpp; sourceTree = "<group>"; };
+		2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PinchGesture.cpp; path = ../src/PinchGesture.cpp; sourceTree = "<group>"; };
+		2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MusicStrokeGesture.cpp; path = ../src/MusicStrokeGesture.cpp; sourceTree = "<group>"; };
 		2D112904E7A04FC5BC5F71F0 /* OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscOutboundPacketStream.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscOutboundPacketStream.cpp; sourceTree = "<group>"; };
 		3F1ECCA5C9EE4DE6B820DA72 /* OscListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscListener.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/OscListener.cpp; sourceTree = "<group>"; };
 		3FA9B9322235411B953866A0 /* TuioProfileBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TuioProfileBase.h; path = ../../cinder_0.8.5_mac/blocks/TUIO/include/TuioProfileBase.h; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		7FD2E4C530CA4970BD0188D9 /* MessageMappingOscPacketListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageMappingOscPacketListener.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/MessageMappingOscPacketListener.h; sourceTree = "<group>"; };
 		8283049C11654BDE8A225495 /* OscException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscException.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscException.h; sourceTree = "<group>"; };
 		864B08CCEA3145E1A5302333 /* OscMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscMessage.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/OscMessage.h; sourceTree = "<group>"; };
-		8866C91BE3B24143A08D1377 /* SecondStudyApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = SecondStudyApp.cpp; path = ../src/SecondStudyApp.cpp; sourceTree = "<group>"; };
+		8866C91BE3B24143A08D1377 /* SecondStudyApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = SecondStudyApp.cpp; path = ../src/SecondStudyApp.cpp; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SecondStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecondStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F465B6087A9432088F9647B /* OscPrintReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscPrintReceivedElements.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscPrintReceivedElements.h; sourceTree = "<group>"; };
 		8FBC6E3B35E841BFB123E9E5 /* NetworkingUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = NetworkingUtils.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/ip/posix/NetworkingUtils.cpp; sourceTree = "<group>"; };
@@ -101,13 +101,13 @@
 		9B173BA9E44C45A5B9A2898B /* TuioObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TuioObject.h; path = ../../cinder_0.8.5_mac/blocks/TUIO/include/TuioObject.h; sourceTree = "<group>"; };
 		A1A724B3F87844308B70CA2D /* IpEndpointName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IpEndpointName.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/ip/IpEndpointName.h; sourceTree = "<group>"; };
 		A1F24B4D11E44476A9257433 /* OscPrintReceivedElements.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscPrintReceivedElements.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscPrintReceivedElements.cpp; sourceTree = "<group>"; };
-		A3630A0617B30EA90073B095 /* SecondStudyApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SecondStudyApp.h; path = ../include/SecondStudyApp.h; sourceTree = "<group>"; };
-		A3703C1617AC2C8F00002544 /* TouchPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TouchPoint.h; path = ../include/TouchPoint.h; sourceTree = "<group>"; };
-		A3703C1717AC2C8F00002544 /* TouchTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TouchTrace.h; path = ../include/TouchTrace.h; sourceTree = "<group>"; };
-		A3703C1817AC458A00002544 /* GestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GestureRecognizer.h; path = ../include/GestureRecognizer.h; sourceTree = "<group>"; };
-		A3703C1917AC480800002544 /* Gesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gesture.h; path = ../include/Gesture.h; sourceTree = "<group>"; };
-		A3703C1A17AC483600002544 /* TapGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TapGesture.h; path = ../include/TapGesture.h; sourceTree = "<group>"; };
-		A3703C1B17AC4ABE00002544 /* TapGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TapGestureRecognizer.h; path = ../include/TapGestureRecognizer.h; sourceTree = "<group>"; };
+		A3630A0617B30EA90073B095 /* SecondStudyApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = SecondStudyApp.h; path = ../include/SecondStudyApp.h; sourceTree = "<group>"; };
+		A3703C1617AC2C8F00002544 /* TouchPoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = TouchPoint.h; path = ../include/TouchPoint.h; sourceTree = "<group>"; };
+		A3703C1717AC2C8F00002544 /* TouchTrace.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = TouchTrace.h; path = ../include/TouchTrace.h; sourceTree = "<group>"; };
+		A3703C1817AC458A00002544 /* GestureRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = GestureRecognizer.h; path = ../include/GestureRecognizer.h; sourceTree = "<group>"; };
+		A3703C1917AC480800002544 /* Gesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = Gesture.h; path = ../include/Gesture.h; sourceTree = "<group>"; };
+		A3703C1A17AC483600002544 /* TapGesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = TapGesture.h; path = ../include/TapGesture.h; sourceTree = "<group>"; };
+		A3703C1B17AC4ABE00002544 /* TapGestureRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = TapGestureRecognizer.h; path = ../include/TapGestureRecognizer.h; sourceTree = "<group>"; };
 		ABEC3EDA4836424796A0B989 /* OscReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscReceivedElements.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscReceivedElements.h; sourceTree = "<group>"; };
 		AE89A0F6E4CD487F914861CE /* UdpSocket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = UdpSocket.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/ip/posix/UdpSocket.cpp; sourceTree = "<group>"; };
 		BC0A9E0D920B4B24AC82AE40 /* OscHostEndianness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscHostEndianness.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscHostEndianness.h; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		DE4C1F4B5B6B475F80A7C056 /* OscOutboundPacketStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscOutboundPacketStream.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscOutboundPacketStream.h; sourceTree = "<group>"; };
 		DEB327A942BC42A2847C6D13 /* PacketListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PacketListener.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/ip/PacketListener.h; sourceTree = "<group>"; };
 		E6D1E7C458FB4FA5BE5AE667 /* TuioCursor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TuioCursor.h; path = ../../cinder_0.8.5_mac/blocks/TUIO/include/TuioCursor.h; sourceTree = "<group>"; };
-		F2FF3139BADE486594B31873 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
+		F2FF3139BADE486594B31873 /* Resources.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -506,6 +506,10 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../cinder_0.8.5_mac/lib\"",
+				);
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
 				PRODUCT_NAME = SecondStudy;
 				SYMROOT = ./build;
@@ -528,6 +532,10 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../cinder_0.8.5_mac/lib\"",
+				);
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder.a\"";
 				PRODUCT_NAME = SecondStudy;
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -544,10 +552,12 @@
 				CINDER_PATH = ../../cinder_0.8.5_mac;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../cinder_0.8.5_mac/blocks/OSC/src ../../cinder_0.8.5_mac/blocks/TUIO/include";
 			};
@@ -561,10 +571,12 @@
 				CINDER_PATH = ../../cinder_0.8.5_mac;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../cinder_0.8.5_mac/blocks/OSC/src ../../cinder_0.8.5_mac/blocks/TUIO/include";
 			};

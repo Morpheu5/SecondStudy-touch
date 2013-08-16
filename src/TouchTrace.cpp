@@ -1,5 +1,7 @@
 #include "TouchTrace.h"
 
+#include "TouchPoint.h"
+
 using namespace ci;
 using namespace ci::app;
 

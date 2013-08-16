@@ -1,19 +1,13 @@
 #pragma once
 
-#include "SecondStudyApp.h"
-
-#include "TouchTrace.h"
 #include "GestureRecognizer.h"
-#include "Gesture.h"
-#include "PinchGesture.h"
 
-#include "cinder/Vector.h"
-
-using namespace ci;
-using namespace ci::app;
 using namespace std;
 
 namespace SecondStudy {
+	
+	class Gesture;
+	class TouchTrace;
 	
 	class PinchGestureRecognizer : public ProgressiveGestureRecognizer {
 	public:

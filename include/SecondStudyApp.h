@@ -1,27 +1,9 @@
 #pragma once
 
 #include "cinder/app/AppNative.h"
-#include "cinder/gl/gl.h"
-
-#include "cinder/Timeline.h"
-
-#include "OscSender.h"
-#include "OscListener.h"
 
 #include "TuioClient.h"
-#include "TuioCursor.h"
-
-#include "TouchTrace.h"
-
-#include "TapGestureRecognizer.h"
-#include "TapGesture.h"
-
-#include "PinchGestureRecognizer.h"
-#include "PinchGesture.h"
-
-#include "Widget.h"
-#include "BoxWidget.h"
-#include "MeasureWidget.h"
+#include "OscSender.h"
 
 #define FPS 60
 
@@ -30,6 +12,14 @@ using namespace ci;
 using namespace ci::app;
 
 namespace SecondStudy {
+	
+	class Gesture;
+	class GestureRecognizer;
+	class ProgressiveGestureRecognizer;
+	class StaticGestureRecognizer;
+	class Widget;
+	
+	class TouchTrace;
 
 	class TheApp : public AppNative {
 		

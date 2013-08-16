@@ -3,8 +3,6 @@
 #include "Gesture.h"
 #include "TouchTrace.h"
 
-#include "cinder/Vector.h"
-
 namespace SecondStudy {
 	
 	class MusicStrokeGesture : public Gesture {

@@ -1,11 +1,12 @@
 #pragma once
 
-#include "TouchTrace.h"
 #include "Gesture.h"
 
 using namespace std;
 
 namespace SecondStudy {
+	
+	class TouchTrace;
 	
 	class GestureRecognizer {
 	protected:
