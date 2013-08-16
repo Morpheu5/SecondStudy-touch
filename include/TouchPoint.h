@@ -3,16 +3,13 @@
 #include "cinder/app/App.h"
 #include "TuioCursor.h"
 
-using namespace ci;
-
 namespace SecondStudy {
 
-	class TouchPoint : public tuio::Cursor {
+	class TouchPoint : public ci::tuio::Cursor {
 	public:
 		double timestamp;
 	
 		TouchPoint();
-		TouchPoint(const tuio::Cursor& c);
+		TouchPoint(const ci::tuio::Cursor& c);
 	};
-
 }

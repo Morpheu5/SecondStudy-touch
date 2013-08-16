@@ -19,13 +19,13 @@ SecondStudy::MusicStrokeGestureRecognizer::MusicStrokeGestureRecognizer(shared_p
 
 void SecondStudy::MusicStrokeGestureRecognizer::processGroup(list<shared_ptr<TouchTrace>> group) {
 	if(group.size() == 1) {
-		auto trace = group.front();
-		TheApp *theApp = (TheApp *)App::get();
-		TouchPoint a = trace->touchPoints.front();
-		TouchPoint b = trace->touchPoints.back();
+		//auto trace = group.front();
+		//TheApp *theApp = (TheApp *)App::get();
+		//TouchPoint a = trace->touchPoints.front();
+		//TouchPoint b = trace->touchPoints.back();
 		
-		Vec2f ap = theApp->tuioToWindow(a.getPos());
-		Vec2f bp = theApp->tuioToWindow(b.getPos());
+		//Vec2f ap = theApp->tuioToWindow(a.getPos());
+		//Vec2f bp = theApp->tuioToWindow(b.getPos());
 		
 	}
 }

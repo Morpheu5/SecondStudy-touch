@@ -23,6 +23,9 @@
 		2C7C4B5217BE2F800057FC57 /* TouchPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B5117BE2F800057FC57 /* TouchPoint.cpp */; };
 		2C7C4B5317BE32C30057FC57 /* MeasureWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6D17BD0E41005A5471 /* MeasureWidget.cpp */; };
 		2C7C4B5417BE32C30057FC57 /* MusicStrokeGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */; };
+		2C7C4B5C17BE38FA0057FC57 /* TapGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B5B17BE38FA0057FC57 /* TapGesture.cpp */; };
+		2C7C4B5E17BE399F0057FC57 /* PinchGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */; };
+		2C7C4B6017BE3B920057FC57 /* MusicStrokeGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */; };
 		2E3930367F3F46AB81E4CA8D /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FBC6E3B35E841BFB123E9E5 /* NetworkingUtils.cpp */; };
 		338E0322CD8D4069A1227BD4 /* OscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61E7DA48C0814DD2BD75F65A /* OscBundle.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
@@ -71,6 +74,9 @@
 		2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicStrokeGestureRecognizer.cpp; path = ../src/MusicStrokeGestureRecognizer.cpp; sourceTree = "<group>"; };
 		2C7C4B4F17BE2DF10057FC57 /* TouchTrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchTrace.cpp; path = ../src/TouchTrace.cpp; sourceTree = "<group>"; };
 		2C7C4B5117BE2F800057FC57 /* TouchPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchPoint.cpp; path = ../src/TouchPoint.cpp; sourceTree = "<group>"; };
+		2C7C4B5B17BE38FA0057FC57 /* TapGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TapGesture.cpp; path = ../src/TapGesture.cpp; sourceTree = "<group>"; };
+		2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PinchGesture.cpp; path = ../src/PinchGesture.cpp; sourceTree = "<group>"; };
+		2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicStrokeGesture.cpp; path = ../src/MusicStrokeGesture.cpp; sourceTree = "<group>"; };
 		2D112904E7A04FC5BC5F71F0 /* OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscOutboundPacketStream.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscOutboundPacketStream.cpp; sourceTree = "<group>"; };
 		3F1ECCA5C9EE4DE6B820DA72 /* OscListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscListener.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/OscListener.cpp; sourceTree = "<group>"; };
 		3FA9B9322235411B953866A0 /* TuioProfileBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TuioProfileBase.h; path = ../../cinder_0.8.5_mac/blocks/TUIO/include/TuioProfileBase.h; sourceTree = "<group>"; };
@@ -154,13 +160,10 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				2C5B7D6017BCE4C8005A5471 /* BoxWidget.cpp */,
-				2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */,
-				2C5B7D6217BCE4C8005A5471 /* TapGestureRecognizer.cpp */,
-				2C5B7D6317BCE4C8005A5471 /* Widget.cpp */,
+				2C7C4B5A17BE38BD0057FC57 /* Gesture Recognizers */,
+				2C7C4B5917BE38980057FC57 /* Gestures */,
+				2C7C4B5817BE387C0057FC57 /* Widgets */,
 				8866C91BE3B24143A08D1377 /* SecondStudyApp.cpp */,
-				2C5B7D6D17BD0E41005A5471 /* MeasureWidget.cpp */,
-				2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */,
 				2C7C4B4F17BE2DF10057FC57 /* TouchTrace.cpp */,
 				2C7C4B5117BE2F800057FC57 /* TouchPoint.cpp */,
 			);
@@ -229,22 +232,14 @@
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				2C5B7D6817BCEF54005A5471 /* BoxWidget.h */,
-				2C5B7D6917BCEF54005A5471 /* PinchGesture.h */,
-				2C5B7D6A17BCEF54005A5471 /* PinchGestureRecognizer.h */,
-				2C5B7D6B17BCEF54005A5471 /* Widget.h */,
+				2C7C4B5717BE38530057FC57 /* Gesture Recognizers */,
+				2C7C4B5617BE383B0057FC57 /* Gestures */,
+				2C7C4B5517BE38270057FC57 /* Widgets */,
+				A3630A0617B30EA90073B095 /* SecondStudyApp.h */,
 				A3703C1617AC2C8F00002544 /* TouchPoint.h */,
 				A3703C1717AC2C8F00002544 /* TouchTrace.h */,
-				F2FF3139BADE486594B31873 /* Resources.h */,
 				1155F1ACA17E465AB2B526DD /* SecondStudy_Prefix.pch */,
-				A3703C1817AC458A00002544 /* GestureRecognizer.h */,
-				A3703C1917AC480800002544 /* Gesture.h */,
-				A3703C1A17AC483600002544 /* TapGesture.h */,
-				A3630A0617B30EA90073B095 /* SecondStudyApp.h */,
-				2C5B7D6C17BD0DE9005A5471 /* MeasureWidget.h */,
-				A3703C1B17AC4ABE00002544 /* TapGestureRecognizer.h */,
-				2C7C4B4B17BE25DC0057FC57 /* MusicStrokeGesture.h */,
-				2C7C4B4C17BE28540057FC57 /* MusicStrokeGestureRecognizer.h */,
+				F2FF3139BADE486594B31873 /* Resources.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -273,6 +268,68 @@
 				A85A1D52AE0B41139CBA6199 /* src */,
 			);
 			name = OSC;
+			sourceTree = "<group>";
+		};
+		2C7C4B5517BE38270057FC57 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				2C5B7D6B17BCEF54005A5471 /* Widget.h */,
+				2C5B7D6817BCEF54005A5471 /* BoxWidget.h */,
+				2C5B7D6C17BD0DE9005A5471 /* MeasureWidget.h */,
+			);
+			name = Widgets;
+			sourceTree = "<group>";
+		};
+		2C7C4B5617BE383B0057FC57 /* Gestures */ = {
+			isa = PBXGroup;
+			children = (
+				A3703C1917AC480800002544 /* Gesture.h */,
+				A3703C1A17AC483600002544 /* TapGesture.h */,
+				2C5B7D6917BCEF54005A5471 /* PinchGesture.h */,
+				2C7C4B4B17BE25DC0057FC57 /* MusicStrokeGesture.h */,
+			);
+			name = Gestures;
+			sourceTree = "<group>";
+		};
+		2C7C4B5717BE38530057FC57 /* Gesture Recognizers */ = {
+			isa = PBXGroup;
+			children = (
+				A3703C1817AC458A00002544 /* GestureRecognizer.h */,
+				A3703C1B17AC4ABE00002544 /* TapGestureRecognizer.h */,
+				2C5B7D6A17BCEF54005A5471 /* PinchGestureRecognizer.h */,
+				2C7C4B4C17BE28540057FC57 /* MusicStrokeGestureRecognizer.h */,
+			);
+			name = "Gesture Recognizers";
+			sourceTree = "<group>";
+		};
+		2C7C4B5817BE387C0057FC57 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				2C5B7D6317BCE4C8005A5471 /* Widget.cpp */,
+				2C5B7D6017BCE4C8005A5471 /* BoxWidget.cpp */,
+				2C5B7D6D17BD0E41005A5471 /* MeasureWidget.cpp */,
+			);
+			name = Widgets;
+			sourceTree = "<group>";
+		};
+		2C7C4B5917BE38980057FC57 /* Gestures */ = {
+			isa = PBXGroup;
+			children = (
+				2C7C4B5B17BE38FA0057FC57 /* TapGesture.cpp */,
+				2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */,
+				2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */,
+			);
+			name = Gestures;
+			sourceTree = "<group>";
+		};
+		2C7C4B5A17BE38BD0057FC57 /* Gesture Recognizers */ = {
+			isa = PBXGroup;
+			children = (
+				2C5B7D6217BCE4C8005A5471 /* TapGestureRecognizer.cpp */,
+				2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */,
+				2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */,
+			);
+			name = "Gesture Recognizers";
 			sourceTree = "<group>";
 		};
 		5A98AFB096C24E16ACEC46C3 /* osc */ = {
@@ -422,6 +479,9 @@
 				2C7C4B5217BE2F800057FC57 /* TouchPoint.cpp in Sources */,
 				2C7C4B5317BE32C30057FC57 /* MeasureWidget.cpp in Sources */,
 				2C7C4B5417BE32C30057FC57 /* MusicStrokeGestureRecognizer.cpp in Sources */,
+				2C7C4B5C17BE38FA0057FC57 /* TapGesture.cpp in Sources */,
+				2C7C4B5E17BE399F0057FC57 /* PinchGesture.cpp in Sources */,
+				2C7C4B6017BE3B920057FC57 /* MusicStrokeGesture.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

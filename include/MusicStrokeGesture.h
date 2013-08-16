@@ -12,13 +12,13 @@ namespace SecondStudy {
 		unsigned long _widgetId;
 		
 	public:
-		MusicStrokeGesture() : _widgetId(0) { }
-		MusicStrokeGesture(const TouchTrace& t, const unsigned long id) : _stroke(t), _widgetId(id) { }
+		MusicStrokeGesture();
+		MusicStrokeGesture(const TouchTrace& t, const unsigned long id);
 		
-		~MusicStrokeGesture() { }
+		~MusicStrokeGesture();
 		
-		const TouchTrace& stroke() const { return _stroke; }
-		const bool isOnWidget() { return _widgetId != 0; }
-		const unsigned long widgetId() const { return _widgetId; }
+		const TouchTrace& stroke() const;
+		const bool isOnWidget();
+		const unsigned long widgetId() const;
 	};
 }

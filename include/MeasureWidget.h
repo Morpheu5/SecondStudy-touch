@@ -12,6 +12,8 @@ using namespace ci;
 using namespace std;
 
 namespace SecondStudy {
+	
+	class TouchTrace;
     
 	class MeasureWidget : public Widget {
 		float _scale;
