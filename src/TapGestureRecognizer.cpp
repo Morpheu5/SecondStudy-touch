@@ -1,5 +1,6 @@
 #include "TapGestureRecognizer.h"
 
+#include "TouchPoint.h"
 #include "TouchTrace.h"
 #include "TapGesture.h"
 

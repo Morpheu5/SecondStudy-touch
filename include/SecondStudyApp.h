@@ -44,8 +44,8 @@ namespace SecondStudy {
 		list<list<shared_ptr<TouchTrace>>> _removedGroups;
 		mutex _removedGroupsMutex;
 		
-		shared_ptr<list<shared_ptr<Widget>>> _widgets;
-		shared_ptr<mutex> _widgetsMutex;
+		list<shared_ptr<Widget>> _widgets;
+		mutex _widgetsMutex;
 		
 		thread _gestureEngine;
 		bool _gestureEngineShouldStop;

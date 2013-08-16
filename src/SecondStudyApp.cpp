@@ -34,14 +34,14 @@ void SecondStudy::TheApp::setup() {
 	setWindowSize(640, 480);
 
 	//_widgets.push_back(make_shared<MeasureWidget>(0.20f * Vec2f(getWindowSize()), 5, 8));
-	_widgets->push_back(make_shared<MeasureWidget>(0.50f * Vec2f(getWindowSize()), 5, 8));
+	_widgets.push_back(make_shared<MeasureWidget>(0.50f * Vec2f(getWindowSize()), 5, 8));
 	//_widgets.push_back(make_shared<MeasureWidget>(0.80f * Vec2f(getWindowSize()), 5, 8));
 
 	_gesturesMutex = make_shared<mutex>();
 	_gestures = make_shared<list<shared_ptr<Gesture>>>();
 	
-	_widgetsMutex = make_shared<mutex>();
-	_widgets = make_shared<list<shared_ptr<Widget>>>();
+	//_widgetsMutex = make_shared<mutex>();
+	//_widgets = make_shared<list<shared_ptr<Widget>>>();
 		
 	_staticGRs.push_back(make_shared<TapGestureRecognizer>(_gestures, _gesturesMutex));
 	_progressiveGRs.push_back(make_shared<PinchGestureRecognizer>(_gestures, _gesturesMutex));
@@ -138,11 +138,11 @@ void SecondStudy::TheApp::draw() {
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) );
 
-	_widgetsMutex->lock();
-	for(auto w : *_widgets) {
+	_widgetsMutex.lock();
+	for(auto w : _widgets) {
 		w->draw();
 	}
-	_widgetsMutex->unlock();
+	_widgetsMutex.unlock();
 		
 	// Let's draw the traces as they are being created
 	_tracesMutex.lock();
@@ -215,16 +215,16 @@ void SecondStudy::TheApp::gestureProcessor() {
 				shared_ptr<TapGesture> tap = dynamic_pointer_cast<TapGesture>(unknownGesture);
 				//console() << "GP >> TAP (" << tap->position().x << ", " << tap->position().y << ")" << endl;
 				if(tap->isOnWidget()) {
-					_widgetsMutex->lock();
-					auto wIt = find_if(_widgets->begin(), _widgets->end(),
+					_widgetsMutex.lock();
+					auto wIt = find_if(_widgets.begin(), _widgets.end(),
 						[&, this](shared_ptr<Widget> w) {
 							return w->id() == tap->widgetId();
 						});
-					if(wIt != _widgets->end()) {
+					if(wIt != _widgets.end()) {
 						auto w = *wIt;
 						w->tap(tap->position());
 					}
-					_widgetsMutex->unlock();
+					_widgetsMutex.unlock();
 				}
 			}
 
@@ -232,19 +232,19 @@ void SecondStudy::TheApp::gestureProcessor() {
 				shared_ptr<PinchGesture> pinch = dynamic_pointer_cast<PinchGesture>(unknownGesture);
 				//console() << "GP >> PINCH" << endl;
 				if(pinch->isOnWidget()) {
-					_widgetsMutex->lock();
-					auto wIt = find_if(_widgets->begin(), _widgets->end(),
+					_widgetsMutex.lock();
+					auto wIt = find_if(_widgets.begin(), _widgets.end(),
 						[&, this](shared_ptr<Widget> w) {
 							return w->id() == pinch->widgetId();
 						});
-					if(wIt != _widgets->end()) {
+					if(wIt != _widgets.end()) {
 						auto w = *wIt;
 						//console() << "   >> DD >> " << pinch->distanceDelta().length() << endl;
 						w->moveBy(pinch->distanceDelta());
                         w->zoomBy(pinch->zoomDelta());
                         w->rotateBy(pinch->angleDelta());
 					}
-					_widgetsMutex->unlock();
+					_widgetsMutex.unlock();
 				}
 			}
 
@@ -279,16 +279,16 @@ void SecondStudy::TheApp::cursorAdded(tuio::Cursor cursor) {
 		_traces[cursor.getSessionId()]->addCursorDown(cursor);
 
 		// Check if it's on a widget
-		_widgetsMutex->lock();
+		_widgetsMutex.lock();
 		// This is done in reverse order because I say so.
-		for(auto it = _widgets->rbegin(); it != _widgets->rend(); ++it) {
+		for(auto it = _widgets.rbegin(); it != _widgets.rend(); ++it) {
 			auto w = *it;
 			if(w->hit(tuioToWindow(cursor.getPos()))) {
 				_traces[cursor.getSessionId()]->widgetId = w->id();
 				break;
 			}
 		}
-		_widgetsMutex->unlock();
+		_widgetsMutex.unlock();
 
 		_groupsMutex.lock();
 		int g = findGroupForTrace(_traces[cursor.getSessionId()]);

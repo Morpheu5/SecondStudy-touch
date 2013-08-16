@@ -1,5 +1,7 @@
 #include "MusicStrokeGesture.h"
 
+#include "TouchPoint.h"
+
 SecondStudy::MusicStrokeGesture::MusicStrokeGesture() :
 _widgetId(0) { }
 
