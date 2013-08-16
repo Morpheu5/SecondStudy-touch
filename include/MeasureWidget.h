@@ -15,6 +15,10 @@ namespace SecondStudy {
 		float _angle;
 		Rectf _noteBox;
 		Rectf _boundingBox;
+		
+		Rectf _playIcon;
+		Rectf _inletIcon;
+		Rectf _outletIcon;
 
         pair<int, int> _measureSize;
 
