@@ -1,7 +1,15 @@
 #include "MeasureWidget.h"
 
+#include "TouchPoint.h"
+#include "TouchTrace.h"
+
+#include "SecondStudyApp.h"
+
+#include <set>
+
 using namespace ci;
 using namespace ci::app;
+using namespace std;
 
 SecondStudy::MeasureWidget::MeasureWidget() : Widget() {
 	_scale = 1.0f;
@@ -74,19 +82,7 @@ bool SecondStudy::MeasureWidget::hit(Vec2f p) {
 }
 
 void SecondStudy::MeasureWidget::tap(Vec2f p) {
-	Matrix44f transform;
-	transform.translate(Vec3f(_position));
-	transform.rotate(Vec3f(0.0f, 0.0f, _angle));
-    
-	Vec3f tp3 = transform.inverted().transformPoint(Vec3f(p));
-	Vec2f tp(tp3.x, tp3.y);
-	tp += _boundingBox.getLowerRight();
-	tp /= _boundingBox.getSize();
-	tp *= Vec2f(notes.size(), notes[0].size());
-	Vec2i n = Vec2i(tp.x, tp.y);
-
-	console() << "T : " << n << endl;
-	toggle(pair<int, int>(n.x, n.y));
+	// This is being taken care by the music stroke itself :)
 }
 
 void SecondStudy::MeasureWidget::moveBy(Vec2f v) {
@@ -115,6 +111,26 @@ void SecondStudy::MeasureWidget::toggle(pair<int, int> note) {
 	}
 }
 
-void SecondStudy::MeasureWidget::processTrace(const TouchTrace &trace) {
-	console() << "Processing" << endl;
+void SecondStudy::MeasureWidget::processStroke(const TouchTrace &trace) {
+	Matrix44f transform;
+	transform.translate(Vec3f(_position));
+	transform.rotate(Vec3f(0.0f, 0.0f, _angle));
+    
+	TheApp *theApp = (TheApp *)App::get();
+	
+	set<pair<int, int>> noteSet;
+	for(auto& q : trace.touchPoints) {
+		Vec2f p(theApp->tuioToWindow(q.getPos()));
+		Vec3f tp3 = transform.inverted().transformPoint(Vec3f(p));
+		Vec2f tp(tp3.x, tp3.y);
+		tp += _boundingBox.getLowerRight();
+		tp /= _boundingBox.getSize();
+		tp *= Vec2f(notes.size(), notes[0].size());
+		Vec2i n = Vec2i(tp.x, tp.y);
+		noteSet.insert(pair<int, int>(n.x, n.y));
+	}
+	
+	for(auto n : noteSet) {
+		toggle(n);
+	}
 }

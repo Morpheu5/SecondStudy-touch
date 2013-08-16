@@ -3,12 +3,14 @@
 #include "MeasureWidget.h"
 #include "TapGestureRecognizer.h"
 #include "PinchGestureRecognizer.h"
+#include "MusicStrokeGestureRecognizer.h"
 
 #include "TouchPoint.h"
 #include "TouchTrace.h"
 
 #include "TapGesture.h"
 #include "PinchGesture.h"
+#include "MusicStrokeGesture.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -22,12 +24,6 @@ void SecondStudy::TheApp::setup() {
 	_tuioClient.registerCursorUpdated(this, &SecondStudy::TheApp::cursorUpdated);
 	_tuioClient.registerCursorRemoved(this, &SecondStudy::TheApp::cursorRemoved);
 		
-	/*
-	_tuioClient.registerObjectAdded(this, &SecondStudy::TheApp::objectAdded);
-	_tuioClient.registerObjectUpdated(this, &SecondStudy::TheApp::objectUpdated);
-	_tuioClient.registerObjectRemoved(this, &SecondStudy::TheApp::objectRemoved);
-		*/
-		
 	_tuioClient.connect(); // Defaults to UDP:3333
 		
 	setFrameRate(FPS);
@@ -39,17 +35,16 @@ void SecondStudy::TheApp::setup() {
 
 	_gesturesMutex = make_shared<mutex>();
 	_gestures = make_shared<list<shared_ptr<Gesture>>>();
-	
-	//_widgetsMutex = make_shared<mutex>();
-	//_widgets = make_shared<list<shared_ptr<Widget>>>();
-		
+
 	_staticGRs.push_back(make_shared<TapGestureRecognizer>(_gestures, _gesturesMutex));
+	_staticGRs.push_back(make_shared<MusicStrokeGestureRecognizer>(_gestures, _gesturesMutex));
+	
 	_progressiveGRs.push_back(make_shared<PinchGestureRecognizer>(_gestures, _gesturesMutex));
 
-	// At last, fire up the gesture engine
+	// At last, fire up the gesture engine...
 	_gestureEngineShouldStop = false;
 	_gestureEngine = thread(bind(&SecondStudy::TheApp::gestureEngine, this));
-
+	// ... and the gesture processor.
 	_gestureProcessorShouldStop = false;
 	_gestureProcessor = thread(bind(&SecondStudy::TheApp::gestureProcessor, this));
 
@@ -202,8 +197,6 @@ void SecondStudy::TheApp::gestureEngine() {
 
 void SecondStudy::TheApp::gestureProcessor() {
 	while(!_gestureProcessorShouldStop) {
-		// this_thread::sleep_for(chrono::milliseconds(50));
-		//console() << "Gestures: " << _gestures->size() << endl;
 		if(_gestures->size() > 0) {
 			_gesturesMutex->lock();
 			// This may very well be leaking stuff around. 'Tis no good.
@@ -213,7 +206,6 @@ void SecondStudy::TheApp::gestureProcessor() {
 
 			if(dynamic_pointer_cast<TapGesture>(unknownGesture)) {
 				shared_ptr<TapGesture> tap = dynamic_pointer_cast<TapGesture>(unknownGesture);
-				//console() << "GP >> TAP (" << tap->position().x << ", " << tap->position().y << ")" << endl;
 				if(tap->isOnWidget()) {
 					_widgetsMutex.lock();
 					auto wIt = find_if(_widgets.begin(), _widgets.end(),
@@ -230,7 +222,6 @@ void SecondStudy::TheApp::gestureProcessor() {
 
 			if(dynamic_pointer_cast<PinchGesture>(unknownGesture)) {
 				shared_ptr<PinchGesture> pinch = dynamic_pointer_cast<PinchGesture>(unknownGesture);
-				//console() << "GP >> PINCH" << endl;
 				if(pinch->isOnWidget()) {
 					_widgetsMutex.lock();
 					auto wIt = find_if(_widgets.begin(), _widgets.end(),
@@ -239,12 +230,28 @@ void SecondStudy::TheApp::gestureProcessor() {
 						});
 					if(wIt != _widgets.end()) {
 						auto w = *wIt;
-						//console() << "   >> DD >> " << pinch->distanceDelta().length() << endl;
 						w->moveBy(pinch->distanceDelta());
                         w->zoomBy(pinch->zoomDelta());
                         w->rotateBy(pinch->angleDelta());
 					}
 					_widgetsMutex.unlock();
+				}
+			}
+			
+			if(dynamic_pointer_cast<MusicStrokeGesture>(unknownGesture)) {
+				shared_ptr<MusicStrokeGesture> stroke = dynamic_pointer_cast<MusicStrokeGesture>(unknownGesture);
+				shared_ptr<MeasureWidget> measure = nullptr;
+				_widgetsMutex.lock();
+				shared_ptr<Widget> w = *find_if(_widgets.begin(), _widgets.end(),
+								   [&, this] (shared_ptr<Widget> w) {
+									   return w->id() == stroke->widgetId();
+								   });
+				if(w != nullptr) {
+					measure = dynamic_pointer_cast<MeasureWidget>(w);
+				}
+				_widgetsMutex.unlock();
+				if(measure != nullptr) {
+					measure->processStroke(stroke->stroke());
 				}
 			}
 

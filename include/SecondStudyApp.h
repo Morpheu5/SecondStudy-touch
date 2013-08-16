@@ -75,7 +75,8 @@ namespace SecondStudy {
 		Vec2f tuioToWindow(Vec2f p) { return p * Vec2f(getWindowSize()); }
         
         int numberOfTraces() { return _traces.size(); }
-		
+		list<shared_ptr<Widget>>& widgets() { return _widgets; }
+		mutex& widgetsMutex() { return _widgetsMutex; }
 	};
 
 }

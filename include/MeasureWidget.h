@@ -35,6 +35,6 @@ namespace SecondStudy {
 		const pair<int, int>& measureSize() const { return _measureSize; }
 		
 		void toggle(pair<int, int> note);
-		void processTrace(const TouchTrace &trace);
+		void processStroke(const TouchTrace &trace);
 	};
 }
