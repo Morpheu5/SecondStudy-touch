@@ -4,6 +4,7 @@
 #include "TapGestureRecognizer.h"
 #include "PinchGestureRecognizer.h"
 #include "MusicStrokeGestureRecognizer.h"
+#include "ConnectionGestureRecognizer.h"
 
 #include "TouchPoint.h"
 #include "TouchTrace.h"
@@ -11,6 +12,7 @@
 #include "TapGesture.h"
 #include "PinchGesture.h"
 #include "MusicStrokeGesture.h"
+#include "ConnectionGesture.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -25,19 +27,22 @@ void SecondStudy::TheApp::setup() {
 	_tuioClient.registerCursorRemoved(this, &SecondStudy::TheApp::cursorRemoved);
 		
 	_tuioClient.connect(); // Defaults to UDP:3333
+	
+	_sender = make_shared<osc::Sender>();
+	_sender->setup("localhost", 3000);
 		
 	setFrameRate(FPS);
 	setWindowSize(640, 480);
 
-	//_widgets.push_back(make_shared<MeasureWidget>(0.20f * Vec2f(getWindowSize()), 5, 8));
-	_widgets.push_back(make_shared<MeasureWidget>(0.50f * Vec2f(getWindowSize()), 5, 8));
-	//_widgets.push_back(make_shared<MeasureWidget>(0.80f * Vec2f(getWindowSize()), 5, 8));
+	_widgets.push_back(make_shared<MeasureWidget>(0.30f * Vec2f(getWindowSize()), 5, 8));
+	_widgets.push_back(make_shared<MeasureWidget>(0.70f * Vec2f(getWindowSize()), 5, 8));
 
 	_gesturesMutex = make_shared<mutex>();
 	_gestures = make_shared<list<shared_ptr<Gesture>>>();
 
 	_staticGRs.push_back(make_shared<TapGestureRecognizer>(_gestures, _gesturesMutex));
 	_staticGRs.push_back(make_shared<MusicStrokeGestureRecognizer>(_gestures, _gesturesMutex));
+	_staticGRs.push_back(make_shared<ConnectionGestureRecognizer>(_gestures, _gesturesMutex));
 	
 	_progressiveGRs.push_back(make_shared<PinchGestureRecognizer>(_gestures, _gesturesMutex));
 
@@ -253,6 +258,11 @@ void SecondStudy::TheApp::gestureProcessor() {
 				if(measure != nullptr) {
 					measure->processStroke(stroke->stroke());
 				}
+			}
+			
+			if(dynamic_pointer_cast<ConnectionGesture>(unknownGesture)) {
+				shared_ptr<ConnectionGesture> connection = dynamic_pointer_cast<ConnectionGesture>(unknownGesture);
+				console() << "Connection between " << connection->fromWid() << " and " << connection->toWid() << endl;
 			}
 
 			//console() << "unknownGesture.use_count() == " << unknownGesture.use_count() << endl;

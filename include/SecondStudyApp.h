@@ -63,6 +63,8 @@ namespace SecondStudy {
 		void update();
 		void draw();
 		
+		shared_ptr<osc::Sender> sender() { return _sender; }
+		
 		void gestureEngine();
 		void gestureProcessor();
 		

@@ -62,7 +62,6 @@ void SecondStudy::TouchTrace::addCursorDown(SecondStudy::TouchPoint p) {
 }
 
 void SecondStudy::TouchTrace::cursorMove(SecondStudy::TouchPoint p) {
-	//Vec2f q = touchPoints.back().getPos();
 	touchPoints.push_back(p);
 	if(p.getSpeed().length() < 0.025f) {
 		state = State::TOUCH_STILL;

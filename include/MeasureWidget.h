@@ -1,9 +1,12 @@
 #pragma once
 
 #include "Widget.h"
+#include "cinder/Timeline.h"
 
 using namespace ci;
 using namespace std;
+
+#define MEASUREWIDGET_NOTELENGTH 0.25f
 
 namespace SecondStudy {
 	
@@ -19,8 +22,17 @@ namespace SecondStudy {
 		Rectf _playIcon;
 		Rectf _inletIcon;
 		Rectf _outletIcon;
+		
+		Rectf _cursor;
+		Anim<Vec2f> _cursorOffset;
+		
+		CueRef _cue;
 
         pair<int, int> _measureSize;
+		
+		vector<int> _midiNotes;
+		
+		void playNote(int n);
 
 	public:
 		vector<vector<bool>> notes;
@@ -35,6 +47,9 @@ namespace SecondStudy {
 		void moveBy(Vec2f v);
         void zoomBy(float s);
         void rotateBy(float a);
+		
+		bool hitInlet(Vec2f p);
+		bool hitOutlet(Vec2f p);
 		
 		const pair<int, int>& measureSize() const { return _measureSize; }
 		

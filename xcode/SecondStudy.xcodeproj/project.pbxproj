@@ -37,6 +37,8 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		937D7D8C08B94672BECC67DB /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = D0F843C1FD034602B2C3566D /* CinderApp.icns */; };
 		A346ECD8FD8A4417A02FE264 /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D112904E7A04FC5BC5F71F0 /* OscOutboundPacketStream.cpp */; };
+		A3F9971E17BFBF1000F330FC /* ConnectionGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3F9971D17BFBF1000F330FC /* ConnectionGesture.cpp */; };
+		A3F9972117BFC37900F330FC /* ConnectionGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3F9972017BFC37900F330FC /* ConnectionGestureRecognizer.cpp */; };
 		A845E87D7E2F415D9C308547 /* OscListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F1ECCA5C9EE4DE6B820DA72 /* OscListener.cpp */; };
 		AE8847C7CA2C47499B9DC218 /* TuioClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C150B95298B848A392C3ACDD /* TuioClient.cpp */; };
 		EF618AE1E8434106A3B039A2 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 298CEBF3BDD5499E944C55B2 /* OscReceivedElements.cpp */; };
@@ -108,6 +110,10 @@
 		A3703C1917AC480800002544 /* Gesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = Gesture.h; path = ../include/Gesture.h; sourceTree = "<group>"; };
 		A3703C1A17AC483600002544 /* TapGesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = TapGesture.h; path = ../include/TapGesture.h; sourceTree = "<group>"; };
 		A3703C1B17AC4ABE00002544 /* TapGestureRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = TapGestureRecognizer.h; path = ../include/TapGestureRecognizer.h; sourceTree = "<group>"; };
+		A3F9971C17BFBD5600F330FC /* ConnectionGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectionGesture.h; path = ../include/ConnectionGesture.h; sourceTree = "<group>"; };
+		A3F9971D17BFBF1000F330FC /* ConnectionGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConnectionGesture.cpp; path = ../src/ConnectionGesture.cpp; sourceTree = "<group>"; };
+		A3F9971F17BFC23F00F330FC /* ConnectionGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectionGestureRecognizer.h; path = ../include/ConnectionGestureRecognizer.h; sourceTree = "<group>"; };
+		A3F9972017BFC37900F330FC /* ConnectionGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConnectionGestureRecognizer.cpp; path = ../src/ConnectionGestureRecognizer.cpp; sourceTree = "<group>"; };
 		ABEC3EDA4836424796A0B989 /* OscReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscReceivedElements.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscReceivedElements.h; sourceTree = "<group>"; };
 		AE89A0F6E4CD487F914861CE /* UdpSocket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = UdpSocket.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/ip/posix/UdpSocket.cpp; sourceTree = "<group>"; };
 		BC0A9E0D920B4B24AC82AE40 /* OscHostEndianness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscHostEndianness.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscHostEndianness.h; sourceTree = "<group>"; };
@@ -287,6 +293,7 @@
 				A3703C1A17AC483600002544 /* TapGesture.h */,
 				2C5B7D6917BCEF54005A5471 /* PinchGesture.h */,
 				2C7C4B4B17BE25DC0057FC57 /* MusicStrokeGesture.h */,
+				A3F9971C17BFBD5600F330FC /* ConnectionGesture.h */,
 			);
 			name = Gestures;
 			sourceTree = "<group>";
@@ -298,6 +305,7 @@
 				A3703C1B17AC4ABE00002544 /* TapGestureRecognizer.h */,
 				2C5B7D6A17BCEF54005A5471 /* PinchGestureRecognizer.h */,
 				2C7C4B4C17BE28540057FC57 /* MusicStrokeGestureRecognizer.h */,
+				A3F9971F17BFC23F00F330FC /* ConnectionGestureRecognizer.h */,
 			);
 			name = "Gesture Recognizers";
 			sourceTree = "<group>";
@@ -318,6 +326,7 @@
 				2C7C4B5B17BE38FA0057FC57 /* TapGesture.cpp */,
 				2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */,
 				2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */,
+				A3F9971D17BFBF1000F330FC /* ConnectionGesture.cpp */,
 			);
 			name = Gestures;
 			sourceTree = "<group>";
@@ -328,6 +337,7 @@
 				2C5B7D6217BCE4C8005A5471 /* TapGestureRecognizer.cpp */,
 				2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */,
 				2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */,
+				A3F9972017BFC37900F330FC /* ConnectionGestureRecognizer.cpp */,
 			);
 			name = "Gesture Recognizers";
 			sourceTree = "<group>";
@@ -482,6 +492,8 @@
 				2C7C4B5C17BE38FA0057FC57 /* TapGesture.cpp in Sources */,
 				2C7C4B5E17BE399F0057FC57 /* PinchGesture.cpp in Sources */,
 				2C7C4B6017BE3B920057FC57 /* MusicStrokeGesture.cpp in Sources */,
+				A3F9971E17BFBF1000F330FC /* ConnectionGesture.cpp in Sources */,
+				A3F9972117BFC37900F330FC /* ConnectionGestureRecognizer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
