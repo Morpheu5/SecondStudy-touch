@@ -9,10 +9,11 @@ SecondStudy::BoxWidget::BoxWidget() : SecondStudy::Widget() {
 	_angle = 0.0f;
 }
 
-SecondStudy::BoxWidget::BoxWidget(Vec2f center) : SecondStudy::Widget(), _position(center) {
+SecondStudy::BoxWidget::BoxWidget(Vec2f center) : SecondStudy::Widget() {
 	_scale = 1.0f;
 	_board = Rectf(-80.0f, -60.0f, 80.0f, 60.0f);
 	_angle = 0.0f;
+	_position = center;
 }
 
 void SecondStudy::BoxWidget::draw() {

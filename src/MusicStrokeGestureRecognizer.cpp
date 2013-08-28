@@ -25,7 +25,7 @@ void SecondStudy::MusicStrokeGestureRecognizer::processGroup(list<shared_ptr<Tou
 		TouchPoint a = trace->touchPoints.front();
 		TouchPoint b = trace->touchPoints.back();
 		
-		Vec2f ap = theApp->tuioToWindow(a.getPos());
+		//Vec2f ap = theApp->tuioToWindow(a.getPos());
 		Vec2f bp = theApp->tuioToWindow(b.getPos());
 		
 		int startWid = trace->widgetId;

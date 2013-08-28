@@ -7,10 +7,7 @@ using namespace ci;
 namespace SecondStudy {
 
 	class BoxWidget : public Widget {
-		float _scale;
 		Rectf _board;
-		Vec2f _position;
-		float _angle;
 
 	public:
 		BoxWidget();

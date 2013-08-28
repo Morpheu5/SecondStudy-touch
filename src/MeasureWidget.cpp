@@ -44,11 +44,11 @@ SecondStudy::MeasureWidget::MeasureWidget() : Widget() {
 }
 
 SecondStudy::MeasureWidget::MeasureWidget(Vec2f center, int rows, int columns) : Widget(),
-_position(center),
 _measureSize(pair<int, int>(columns, rows)) {
 	
     _scale = 1.0f;
 	_angle = 0.0f;
+	_position = center;
 	_noteBox = Rectf(0.0f, 0.0f, 30.0f, 30.0f);
 	_boundingBox = Rectf(0.0f, 0.0f, _noteBox.getWidth() * columns, _noteBox.getHeight() * rows);
 	_boundingBox -= _boundingBox.getSize() / 2.0f;

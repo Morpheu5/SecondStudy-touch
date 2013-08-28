@@ -13,9 +13,6 @@ namespace SecondStudy {
 	class TouchTrace;
     
 	class MeasureWidget : public Widget {
-		float _scale;
-		Vec2f _position;
-		float _angle;
 		Rectf _noteBox;
 		Rectf _boundingBox;
 		
@@ -52,6 +49,8 @@ namespace SecondStudy {
 		bool hitOutlet(Vec2f p);
 		
 		const pair<int, int>& measureSize() const { return _measureSize; }
+		const Rectf& inletIcon() const { return _inletIcon; }
+		const Rectf& outletIcon() const { return _outletIcon; }
 		
 		void toggle(pair<int, int> note);
 		void processStroke(const TouchTrace &trace);

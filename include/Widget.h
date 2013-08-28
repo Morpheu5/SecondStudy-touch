@@ -8,12 +8,18 @@ namespace SecondStudy {
 		static unsigned long s_id;
 
 	protected:
+		float _scale;
+		Vec2f _position;
+		float _angle;
 		unsigned long _id;
 
 	public:
 		Widget();
 
 		const unsigned long id() const { return _id; }
+		const float scale() const { return _scale; }
+		const Vec2f position() const { return _position; }
+		const float angle() const { return _angle; }
 
 		virtual void draw() = 0;
 		virtual bool hit(ci::Vec2f p) = 0;

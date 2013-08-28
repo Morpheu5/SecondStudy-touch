@@ -34,8 +34,17 @@ void SecondStudy::TheApp::setup() {
 	setFrameRate(FPS);
 	setWindowSize(640, 480);
 
-	_widgets.push_back(make_shared<MeasureWidget>(0.30f * Vec2f(getWindowSize()), 5, 8));
-	_widgets.push_back(make_shared<MeasureWidget>(0.70f * Vec2f(getWindowSize()), 5, 8));
+	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(0.30f * Vec2f(getWindowSize()), 5, 8);
+	shared_ptr<MeasureWidget> tw2 = make_shared<MeasureWidget>(0.70f * Vec2f(getWindowSize()), 5, 8);
+	_widgets.push_back(tw1);
+	_widgets.push_back(tw2);
+	
+	list<shared_ptr<MeasureWidget>> s1;
+	s1.push_back(tw1);
+	list<shared_ptr<MeasureWidget>> s2;
+	s2.push_back(tw2);
+	_sequences.push_back(s1);
+	_sequences.push_back(s2);
 
 	_gesturesMutex = make_shared<mutex>();
 	_gestures = make_shared<list<shared_ptr<Gesture>>>();
@@ -79,6 +88,14 @@ void SecondStudy::TheApp::keyDown(KeyEvent event) {
 }
 
 void SecondStudy::TheApp::update() {
+	/*
+	_sequencesMutex.lock();
+	_sequences.remove_if( [](list<shared_ptr<MeasureWidget>> l) {
+		return l.empty();
+	});
+	_sequencesMutex.unlock();
+	 */
+	
 	//console() << gesture << " :: " << cursor << endl;
 	_tracesMutex.lock();
 	for(auto t : _traces) {
@@ -137,6 +154,36 @@ void SecondStudy::TheApp::update() {
 void SecondStudy::TheApp::draw() {
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) );
+	
+	gl::color(1.0f, 1.0f, 1.0f, 1.0f);
+	glLineWidth(5.0f);
+	
+	_sequencesMutex.lock();
+	for(auto& s : _sequences) {
+		if(s.size() > 1) {
+			for(auto it = s.begin(); it != prev(s.end()); ++it) {
+				shared_ptr<MeasureWidget> a = *it;
+				shared_ptr<MeasureWidget> b = *(next(it));
+
+				Matrix44f at;
+				at.translate(Vec3f(a->position()));
+				at.rotate(Vec3f(0.0f, 0.0f, a->angle()));
+				
+				Matrix44f bt;
+				bt.translate(Vec3f(b->position()));
+				bt.rotate(Vec3f(0.0f, 0.0f, b->angle()));
+				
+				Vec3f ap3 = at.transformPoint(Vec3f(a->outletIcon().getCenter()));
+				Vec3f bp3 = bt.transformPoint(Vec3f(b->inletIcon().getCenter()));
+				
+				Vec2f ap(ap3.x, ap3.y);
+				Vec2f bp(bp3.x, bp3.y);
+
+				gl::drawLine(ap, bp);
+			}
+		}
+	}
+	_sequencesMutex.unlock();
 
 	_widgetsMutex.lock();
 	for(auto w : _widgets) {
@@ -263,6 +310,55 @@ void SecondStudy::TheApp::gestureProcessor() {
 			if(dynamic_pointer_cast<ConnectionGesture>(unknownGesture)) {
 				shared_ptr<ConnectionGesture> connection = dynamic_pointer_cast<ConnectionGesture>(unknownGesture);
 				console() << "Connection between " << connection->fromWid() << " and " << connection->toWid() << endl;
+				unsigned long fromWid = connection->fromWid();
+				unsigned long toWid = connection->toWid();
+				_sequencesMutex.lock();
+
+				bool doTheSplice = true;
+				list<list<shared_ptr<MeasureWidget>>>::iterator fsIt;
+				list<shared_ptr<MeasureWidget>>::iterator fwIt;
+				[&,this]() {
+					for(auto sit = _sequences.begin(); sit != _sequences.end(); ++sit) {
+						for(auto wit = sit->begin(); wit != sit->end(); ++wit) {
+							if((*wit)->id() == fromWid) {
+								// check if this precedes the destination in the same sequence
+								for(auto i(wit); i != sit->begin(); --i) {
+									if((*i)->id() == toWid) {
+										doTheSplice = false;
+										return;
+									}
+								}
+								// cover head case
+								if(sit->front()->id() == toWid) {
+									doTheSplice = false;
+									return;
+								}
+								fsIt = sit;
+								fwIt = wit;
+								return;
+							}
+						}
+					}
+				}();
+				
+				if(doTheSplice) {
+					list<list<shared_ptr<MeasureWidget>>>::iterator tsIt;
+					list<shared_ptr<MeasureWidget>>::iterator twIt;
+					[&,this]() {
+						for(auto sit = _sequences.begin(); sit != _sequences.end(); ++sit) {
+							for(auto wit = sit->begin(); wit != sit->end(); ++wit) {
+								if((*wit)->id() == toWid) {
+									tsIt = sit;
+									twIt = wit;
+									return;
+								}
+							}
+						}
+					}();
+				
+					tsIt->splice(twIt, *fsIt, fsIt->begin(), next(fwIt));
+				}
+				_sequencesMutex.unlock();
 			}
 
 			//console() << "unknownGesture.use_count() == " << unknownGesture.use_count() << endl;

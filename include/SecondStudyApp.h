@@ -18,6 +18,7 @@ namespace SecondStudy {
 	class ProgressiveGestureRecognizer;
 	class StaticGestureRecognizer;
 	class Widget;
+	class MeasureWidget;
 	
 	class TouchTrace;
 
@@ -54,6 +55,9 @@ namespace SecondStudy {
 		bool _gestureProcessorShouldStop;
 
 		bool go;
+		
+		list<list<shared_ptr<MeasureWidget>>> _sequences;
+		mutex _sequencesMutex;
 		
 	public:
 		void setup();
