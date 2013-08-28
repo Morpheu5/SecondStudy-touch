@@ -365,6 +365,20 @@ void SecondStudy::TheApp::gestureProcessor() {
 		}
 	}
 }
+
+void SecondStudy::TheApp::measureHasFinishedPlaying(int id) {
+	console() << "Measure " << id << " has finished" << endl;
+	// TODO Select the next in the sequence and make it play
+	_sequencesMutex.lock();
+	for(auto sit = _sequences.begin(); sit != _sequences.end(); ++sit) {
+		for(auto wit = sit->begin(); wit != sit->end(); ++wit) {
+			if((*wit)->id() == id && next(wit) != sit->end()) {
+				(*next(wit))->play();
+			}
+		}
+	}
+	_sequencesMutex.unlock();
+}
 	
 void SecondStudy::TheApp::cursorAdded(tuio::Cursor cursor) {
 	bool continued = false;

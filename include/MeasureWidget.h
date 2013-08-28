@@ -30,10 +30,13 @@ namespace SecondStudy {
 		vector<int> _midiNotes;
 		
 		void playNote(int n);
+		void finishedPlaying();
 
 	public:
 		vector<vector<bool>> notes;
 		mutex notesMutex;
+		
+		bool isPlaying;
 		
 		MeasureWidget();
 		MeasureWidget(Vec2f center, int rows, int columns);
@@ -54,5 +57,8 @@ namespace SecondStudy {
 		
 		void toggle(pair<int, int> note);
 		void processStroke(const TouchTrace &trace);
+		
+		void play();
+		
 	};
 }

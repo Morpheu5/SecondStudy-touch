@@ -41,6 +41,8 @@ SecondStudy::MeasureWidget::MeasureWidget() : Widget() {
 	_midiNotes.push_back(60);
 
 	notes = vector<vector<bool>>(1, vector<bool>(1, false));
+	
+	isPlaying = false;
 }
 
 SecondStudy::MeasureWidget::MeasureWidget(Vec2f center, int rows, int columns) : Widget(),
@@ -74,6 +76,8 @@ _measureSize(pair<int, int>(columns, rows)) {
 	_midiNotes.push_back(60);
 	
 	notes = vector<vector<bool>>(columns, vector<bool>(rows, false));
+	
+	isPlaying = false;
 }
 
 void SecondStudy::MeasureWidget::draw() {
@@ -161,18 +165,23 @@ void SecondStudy::MeasureWidget::tap(Vec2f p) {
 	Vec2f tp(tp3.x, tp3.y);
 	
 	if((_playIcon * _scale).contains(tp)) {
-		app::timeline().apply(&_cursorOffset, Vec2f(0.0f, 0.0f), 0);
-		app::timeline().appendTo(&_cursorOffset, Vec2f(_boundingBox.getWidth() * (1.0f - 1.0f/notes.size()), 0.0f), MEASUREWIDGET_NOTELENGTH*notes.size());
-		app::timeline().appendTo(&_cursorOffset, Vec2f(0.0f, 0.0f), MEASUREWIDGET_NOTELENGTH, EaseInOutSine());
-		
-		/*
-		for(int i = 0; i < _size.first; i++) {
-			_cue = app::timeline().add( bind(&Tangible::_play, this, i), app::timeline().getCurrentTime() + noteLength*i);
-		}
-		_cue->setAutoRemove(true);
-		_cue->setLoop(false);
-		 */
+		play();
 	}
+}
+
+void SecondStudy::MeasureWidget::play() {
+	app::timeline().apply(&_cursorOffset, Vec2f(0.0f, 0.0f), 0);
+	app::timeline().appendTo(&_cursorOffset, Vec2f(_boundingBox.getWidth() * (1.0f - 1.0f/notes.size()), 0.0f), MEASUREWIDGET_NOTELENGTH*notes.size());
+	app::timeline().appendTo(&_cursorOffset, Vec2f(0.0f, 0.0f), MEASUREWIDGET_NOTELENGTH, EaseInOutSine());
+	
+	for(int i = 0; i < notes.size(); i++) {
+		_cue = app::timeline().add( bind(&MeasureWidget::playNote, this, i), app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*i);
+	}
+	_cue = app::timeline().add( bind(&MeasureWidget::finishedPlaying, this), app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*(1+notes.size()));
+	_cue->setAutoRemove(true);
+	_cue->setLoop(false);
+	
+	isPlaying = true;
 }
 
 void SecondStudy::MeasureWidget::playNote(int n) {
@@ -185,6 +194,12 @@ void SecondStudy::MeasureWidget::playNote(int n) {
 			theApp->sender()->sendMessage(m);
 		}
 	}
+}
+
+void SecondStudy::MeasureWidget::finishedPlaying() {
+	isPlaying = false;
+	TheApp *theApp = (TheApp *)App::get();
+	theApp->measureHasFinishedPlaying(_id);
 }
 
 void SecondStudy::MeasureWidget::moveBy(Vec2f v) {

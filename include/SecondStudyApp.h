@@ -83,6 +83,8 @@ namespace SecondStudy {
         int numberOfTraces() { return _traces.size(); }
 		list<shared_ptr<Widget>>& widgets() { return _widgets; }
 		mutex& widgetsMutex() { return _widgetsMutex; }
+		
+		void measureHasFinishedPlaying(int id);
 	};
 
 }
