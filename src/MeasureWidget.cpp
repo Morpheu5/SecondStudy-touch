@@ -110,6 +110,13 @@ void SecondStudy::MeasureWidget::draw() {
 			gl::drawStrokedRect(box);
 			
 			gl::drawStrokedRect(_playIcon);
+			if(isPlaying) {
+				gl::drawSolidRect(Rectf(_playIcon.getUpperLeft() + Vec2f(7.5f, 7.5f), _playIcon.getLowerRight() - Vec2f(7.5f, 7.5f)));
+			} else {
+				gl::drawSolidTriangle(_playIcon.getUpperLeft() + Vec2f(10.0f, 7.5f), _playIcon.getLowerLeft() + Vec2f(10.0f, -7.5f), _playIcon.getCenter() + Vec2f(10.0f, 0.0f));
+			}
+			
+			
 			gl::drawStrokedRect(_inletIcon);
 			gl::drawStrokedRect(_outletIcon);
 		}
@@ -165,23 +172,36 @@ void SecondStudy::MeasureWidget::tap(Vec2f p) {
 	Vec2f tp(tp3.x, tp3.y);
 	
 	if((_playIcon * _scale).contains(tp)) {
-		play();
+		if(isPlaying) {
+			stop();
+		} else {
+			play();
+		}
 	}
 }
 
 void SecondStudy::MeasureWidget::play() {
 	app::timeline().apply(&_cursorOffset, Vec2f(0.0f, 0.0f), 0);
-	app::timeline().appendTo(&_cursorOffset, Vec2f(_boundingBox.getWidth() * (1.0f - 1.0f/notes.size()), 0.0f), MEASUREWIDGET_NOTELENGTH*notes.size());
+	app::timeline().appendTo(&_cursorOffset, Vec2f(_boundingBox.getWidth() * (1.0f - 1.0f/notes.size()), 0.0f), MEASUREWIDGET_NOTELENGTH*(notes.size()-1));
 	app::timeline().appendTo(&_cursorOffset, Vec2f(0.0f, 0.0f), MEASUREWIDGET_NOTELENGTH, EaseInOutSine());
 	
 	for(int i = 0; i < notes.size(); i++) {
 		_cue = app::timeline().add( bind(&MeasureWidget::playNote, this, i), app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*i);
 	}
-	_cue = app::timeline().add( bind(&MeasureWidget::finishedPlaying, this), app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*(1+notes.size()));
+	_cue = app::timeline().add( bind(&MeasureWidget::finishedPlaying, this), app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*(notes.size()));
 	_cue->setAutoRemove(true);
 	_cue->setLoop(false);
 	
 	isPlaying = true;
+}
+
+void nop() { }
+
+void SecondStudy::MeasureWidget::stop() {
+	app::timeline().clear();
+	app::timeline().apply(&_cursorOffset, Vec2f(0.0f, 0.0f), MEASUREWIDGET_NOTELENGTH, EaseInOutSine());
+	_cue->create(nop);
+	isPlaying = false;
 }
 
 void SecondStudy::MeasureWidget::playNote(int n) {

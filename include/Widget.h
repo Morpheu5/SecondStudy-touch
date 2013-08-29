@@ -20,6 +20,9 @@ namespace SecondStudy {
 		const float scale() const { return _scale; }
 		const Vec2f position() const { return _position; }
 		const float angle() const { return _angle; }
+		
+		void position(Vec2f p) { _position = p; }
+		void angle(float a) { _angle = a; }
 
 		virtual void draw() = 0;
 		virtual bool hit(ci::Vec2f p) = 0;

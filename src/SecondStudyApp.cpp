@@ -1,18 +1,23 @@
 #include "SecondStudyApp.h"
 
+#include "TouchPoint.h"
+#include "TouchTrace.h"
+
 #include "MeasureWidget.h"
+
 #include "TapGestureRecognizer.h"
 #include "PinchGestureRecognizer.h"
 #include "MusicStrokeGestureRecognizer.h"
 #include "ConnectionGestureRecognizer.h"
-
-#include "TouchPoint.h"
-#include "TouchTrace.h"
+#include "DisconnectionGestureRecognizer.h"
+#include "LongTapGestureRecognizer.h"
 
 #include "TapGesture.h"
 #include "PinchGesture.h"
 #include "MusicStrokeGesture.h"
 #include "ConnectionGesture.h"
+#include "DisconnectionGesture.h"
+#include "LongTapGesture.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -52,6 +57,8 @@ void SecondStudy::TheApp::setup() {
 	_staticGRs.push_back(make_shared<TapGestureRecognizer>(_gestures, _gesturesMutex));
 	_staticGRs.push_back(make_shared<MusicStrokeGestureRecognizer>(_gestures, _gesturesMutex));
 	_staticGRs.push_back(make_shared<ConnectionGestureRecognizer>(_gestures, _gesturesMutex));
+	_staticGRs.push_back(make_shared<DisconnectionGestureRecognizer>(_gestures, _gesturesMutex));
+	_staticGRs.push_back(make_shared<LongTapGestureRecognizer>(_gestures, _gesturesMutex));
 	
 	_progressiveGRs.push_back(make_shared<PinchGestureRecognizer>(_gestures, _gesturesMutex));
 
@@ -88,13 +95,11 @@ void SecondStudy::TheApp::keyDown(KeyEvent event) {
 }
 
 void SecondStudy::TheApp::update() {
-	/*
 	_sequencesMutex.lock();
 	_sequences.remove_if( [](list<shared_ptr<MeasureWidget>> l) {
 		return l.empty();
 	});
 	_sequencesMutex.unlock();
-	 */
 	
 	//console() << gesture << " :: " << cursor << endl;
 	_tracesMutex.lock();
@@ -309,7 +314,6 @@ void SecondStudy::TheApp::gestureProcessor() {
 			
 			if(dynamic_pointer_cast<ConnectionGesture>(unknownGesture)) {
 				shared_ptr<ConnectionGesture> connection = dynamic_pointer_cast<ConnectionGesture>(unknownGesture);
-				console() << "Connection between " << connection->fromWid() << " and " << connection->toWid() << endl;
 				unsigned long fromWid = connection->fromWid();
 				unsigned long toWid = connection->toWid();
 				_sequencesMutex.lock();
@@ -359,6 +363,46 @@ void SecondStudy::TheApp::gestureProcessor() {
 					tsIt->splice(twIt, *fsIt, fsIt->begin(), next(fwIt));
 				}
 				_sequencesMutex.unlock();
+			}
+			
+			if(dynamic_pointer_cast<DisconnectionGesture>(unknownGesture)) {
+				shared_ptr<DisconnectionGesture> disc = dynamic_pointer_cast<DisconnectionGesture>(unknownGesture);
+				unsigned long fromWid = disc->fromWid();
+				unsigned long toWid = disc->toWid();
+				_sequencesMutex.lock();
+				[&,this]() {
+					for(auto sit = _sequences.begin(); sit != _sequences.end(); ++sit) {
+						for(auto wit = sit->begin(); wit != sit->end(); ++wit) {
+							if((*wit)->id() == fromWid && (*next(wit))->id() == toWid) {
+								list<shared_ptr<MeasureWidget>> newSeq(next(wit), sit->end());
+								_sequences.push_back(newSeq);
+								sit->erase(next(wit), sit->end());
+								return;
+							}
+						}
+					}
+				}();
+				_sequencesMutex.unlock();
+			}
+			
+			if(dynamic_pointer_cast<LongTapGesture>(unknownGesture)) {
+				shared_ptr<LongTapGesture> longtap = dynamic_pointer_cast<LongTapGesture>(unknownGesture);
+				if(!longtap->isOnWidget()) {
+					_widgetsMutex.lock();
+					Vec2f p = longtap->position();
+					auto w = make_shared<MeasureWidget>(p, 5, 8);
+					Vec2f c = getWindowCenter();
+					float a = atan2(p.y-c.y, p.x-c.x);
+					w->angle(a - M_PI_2);
+					_widgets.push_back(w);
+					_widgetsMutex.unlock();
+					
+					_sequencesMutex.lock();
+					list<shared_ptr<MeasureWidget>> s;
+					s.push_back(w);
+					_sequences.push_back(s);
+					_sequencesMutex.unlock();
+				}
 			}
 
 			//console() << "unknownGesture.use_count() == " << unknownGesture.use_count() << endl;

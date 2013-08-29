@@ -59,6 +59,6 @@ namespace SecondStudy {
 		void processStroke(const TouchTrace &trace);
 		
 		void play();
-		
+		void stop();
 	};
 }

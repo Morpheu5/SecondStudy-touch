@@ -81,8 +81,12 @@ namespace SecondStudy {
 		Vec2f tuioToWindow(Vec2f p) { return p * Vec2f(getWindowSize()); }
         
         int numberOfTraces() { return _traces.size(); }
+		
 		list<shared_ptr<Widget>>& widgets() { return _widgets; }
 		mutex& widgetsMutex() { return _widgetsMutex; }
+		
+		list<list<shared_ptr<MeasureWidget>>>& sequences() { return _sequences; }
+		mutex& sequencesMutex() { return _sequencesMutex; }
 		
 		void measureHasFinishedPlaying(int id);
 	};

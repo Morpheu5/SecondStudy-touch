@@ -15,6 +15,10 @@
 		01B801D6860A4BEEA5F2EF45 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1F24B4D11E44476A9257433 /* OscPrintReceivedElements.cpp */; };
 		0B8C68469553407399226939 /* OscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AF82F7CDED64D8F9D9BF401 /* OscSender.cpp */; };
 		0F193A897B8F4A0BA5077D9D /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE89A0F6E4CD487F914861CE /* UdpSocket.cpp */; };
+		2C1AD4F817CF62C5006BC4FC /* DisconnectionGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AD4F717CF62C5006BC4FC /* DisconnectionGesture.cpp */; };
+		2C1AD4FB17CF6348006BC4FC /* DisconnectionGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AD4FA17CF6348006BC4FC /* DisconnectionGestureRecognizer.cpp */; };
+		2C1AD4FE17CF937A006BC4FC /* LongTapGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AD4FD17CF937A006BC4FC /* LongTapGesture.cpp */; };
+		2C1AD50217CF94C7006BC4FC /* LongTapGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AD50117CF94C7006BC4FC /* LongTapGestureRecognizer.cpp */; };
 		2C5B7D6417BCE4C8005A5471 /* BoxWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6017BCE4C8005A5471 /* BoxWidget.cpp */; };
 		2C5B7D6517BCE4C8005A5471 /* PinchGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */; };
 		2C5B7D6617BCE4C8005A5471 /* TapGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6217BCE4C8005A5471 /* TapGestureRecognizer.cpp */; };
@@ -61,6 +65,14 @@
 		298CEBF3BDD5499E944C55B2 /* OscReceivedElements.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscReceivedElements.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscReceivedElements.cpp; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C1AD4F617CF626D006BC4FC /* DisconnectionGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DisconnectionGesture.h; path = ../include/DisconnectionGesture.h; sourceTree = "<group>"; };
+		2C1AD4F717CF62C5006BC4FC /* DisconnectionGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DisconnectionGesture.cpp; path = ../src/DisconnectionGesture.cpp; sourceTree = "<group>"; };
+		2C1AD4F917CF631F006BC4FC /* DisconnectionGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DisconnectionGestureRecognizer.h; path = ../include/DisconnectionGestureRecognizer.h; sourceTree = "<group>"; };
+		2C1AD4FA17CF6348006BC4FC /* DisconnectionGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DisconnectionGestureRecognizer.cpp; path = ../src/DisconnectionGestureRecognizer.cpp; sourceTree = "<group>"; };
+		2C1AD4FC17CF9340006BC4FC /* LongTapGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LongTapGesture.h; path = ../include/LongTapGesture.h; sourceTree = "<group>"; };
+		2C1AD4FD17CF937A006BC4FC /* LongTapGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LongTapGesture.cpp; path = ../src/LongTapGesture.cpp; sourceTree = "<group>"; };
+		2C1AD50017CF93C2006BC4FC /* LongTapGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LongTapGestureRecognizer.h; path = ../include/LongTapGestureRecognizer.h; sourceTree = "<group>"; };
+		2C1AD50117CF94C7006BC4FC /* LongTapGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LongTapGestureRecognizer.cpp; path = ../src/LongTapGestureRecognizer.cpp; sourceTree = "<group>"; };
 		2C5B7D6017BCE4C8005A5471 /* BoxWidget.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = BoxWidget.cpp; path = ../src/BoxWidget.cpp; sourceTree = "<group>"; };
 		2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PinchGestureRecognizer.cpp; path = ../src/PinchGestureRecognizer.cpp; sourceTree = "<group>"; };
 		2C5B7D6217BCE4C8005A5471 /* TapGestureRecognizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TapGestureRecognizer.cpp; path = ../src/TapGestureRecognizer.cpp; sourceTree = "<group>"; };
@@ -294,6 +306,8 @@
 				2C5B7D6917BCEF54005A5471 /* PinchGesture.h */,
 				2C7C4B4B17BE25DC0057FC57 /* MusicStrokeGesture.h */,
 				A3F9971C17BFBD5600F330FC /* ConnectionGesture.h */,
+				2C1AD4F617CF626D006BC4FC /* DisconnectionGesture.h */,
+				2C1AD4FC17CF9340006BC4FC /* LongTapGesture.h */,
 			);
 			name = Gestures;
 			sourceTree = "<group>";
@@ -306,6 +320,8 @@
 				2C5B7D6A17BCEF54005A5471 /* PinchGestureRecognizer.h */,
 				2C7C4B4C17BE28540057FC57 /* MusicStrokeGestureRecognizer.h */,
 				A3F9971F17BFC23F00F330FC /* ConnectionGestureRecognizer.h */,
+				2C1AD4F917CF631F006BC4FC /* DisconnectionGestureRecognizer.h */,
+				2C1AD50017CF93C2006BC4FC /* LongTapGestureRecognizer.h */,
 			);
 			name = "Gesture Recognizers";
 			sourceTree = "<group>";
@@ -327,6 +343,8 @@
 				2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */,
 				2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */,
 				A3F9971D17BFBF1000F330FC /* ConnectionGesture.cpp */,
+				2C1AD4F717CF62C5006BC4FC /* DisconnectionGesture.cpp */,
+				2C1AD4FD17CF937A006BC4FC /* LongTapGesture.cpp */,
 			);
 			name = Gestures;
 			sourceTree = "<group>";
@@ -338,6 +356,8 @@
 				2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */,
 				2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */,
 				A3F9972017BFC37900F330FC /* ConnectionGestureRecognizer.cpp */,
+				2C1AD4FA17CF6348006BC4FC /* DisconnectionGestureRecognizer.cpp */,
+				2C1AD50117CF94C7006BC4FC /* LongTapGestureRecognizer.cpp */,
 			);
 			name = "Gesture Recognizers";
 			sourceTree = "<group>";
@@ -494,6 +514,10 @@
 				2C7C4B6017BE3B920057FC57 /* MusicStrokeGesture.cpp in Sources */,
 				A3F9971E17BFBF1000F330FC /* ConnectionGesture.cpp in Sources */,
 				A3F9972117BFC37900F330FC /* ConnectionGestureRecognizer.cpp in Sources */,
+				2C1AD4F817CF62C5006BC4FC /* DisconnectionGesture.cpp in Sources */,
+				2C1AD4FB17CF6348006BC4FC /* DisconnectionGestureRecognizer.cpp in Sources */,
+				2C1AD4FE17CF937A006BC4FC /* LongTapGesture.cpp in Sources */,
+				2C1AD50217CF94C7006BC4FC /* LongTapGestureRecognizer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
