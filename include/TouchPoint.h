@@ -13,5 +13,7 @@ namespace SecondStudy {
 	
 		TouchPoint();
 		TouchPoint(const Cursor& c);
+		
+		void setPos(Vec2f p) { mPos = p; }
 	};
 }
