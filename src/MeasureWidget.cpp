@@ -65,7 +65,7 @@ _measureSize(pair<int, int>(columns, rows)) {
 	_outletIcon += Vec2f(_boundingBox.getUpperRight().x + 10.0f, -_outletIcon.getWidth()/2.0f);
 	
 	_cursorOffset = Vec2f(0.0f, 0.0f);
-	_cursor = Rectf(Vec2f(0.0f, 0.0f), Vec2f(_noteBox.getWidth(), 10.0f));
+	_cursor = Rectf(Vec2f(0.0f, 0.0f), Vec2f(_noteBox.getWidth(), 5.0f));
 	_cursor += _boundingBox.getLowerLeft();
 
 	// C major pentatonic
@@ -98,7 +98,6 @@ void SecondStudy::MeasureWidget::draw() {
 	Vec2f origin = _boundingBox.getUpperLeft();
 	for(int col = 0; col < cols; col++) {
 		for(int row = 0; row < rows; row++) {
-			//console() << "C: " << col << " R: " << row << endl;
 			Rectf box = _noteBox + origin + Vec2f(col, row) * _noteBox.getSize();
 			if(notes[col][row]) {
 				gl::color(1.0f, 1.0f, 1.0f, 0.5f);
@@ -108,23 +107,26 @@ void SecondStudy::MeasureWidget::draw() {
 			gl::drawSolidRect(box);
 			gl::color(1.0f, 1.0f, 1.0f, 1.0f);
 			gl::drawStrokedRect(box);
-			
-			gl::drawStrokedRect(_playIcon);
-			if(isPlaying) {
-				gl::drawSolidRect(Rectf(_playIcon.getUpperLeft() + Vec2f(7.5f, 7.5f), _playIcon.getLowerRight() - Vec2f(7.5f, 7.5f)));
-			} else {
-				gl::drawSolidTriangle(_playIcon.getUpperLeft() + Vec2f(10.0f, 7.5f), _playIcon.getLowerLeft() + Vec2f(10.0f, -7.5f), _playIcon.getCenter() + Vec2f(10.0f, 0.0f));
-			}
-			
-			
-			gl::drawStrokedRect(_inletIcon);
-			gl::drawStrokedRect(_outletIcon);
 		}
 	}
 	
-	gl::color(1.0f, 1.0f, 1.0f, 0.75f);
+	if(isPlaying) {
+		gl::color(1.0f, 0.5f, 0.0f, 0.5f);
+		gl::drawSolidRect(Rectf(_playIcon.getUpperLeft() + Vec2f(7.5f, 7.5f), _playIcon.getLowerRight() - Vec2f(7.5f, 7.5f)));
+	} else {
+		gl::color(0.0f, 1.0f, 0.0f, 0.5f);
+		gl::drawSolidTriangle(_playIcon.getUpperLeft() + Vec2f(10.0f, 7.5f), _playIcon.getLowerLeft() + Vec2f(10.0f, -7.5f), _playIcon.getCenter() + Vec2f(10.0f, 0.0f));
+	}
+	gl::drawSolidRect(_playIcon);
+	
+	gl::color(0.5f, 0.75f, 1.0f, 0.5f);
+	gl::drawSolidCircle(_inletIcon.getCenter(), _inletIcon.getWidth()/2.0f);
+	
+	gl::color(1.0f, 0.75f, 0.5f, 0.5f);
+	gl::drawSolidCircle(_outletIcon.getCenter(), _outletIcon.getWidth()/2.0f);
+	
+	gl::color(1.0f, 1.0f, 1.0f, 0.5f);
 	gl::drawSolidRect(_cursor + _cursorOffset);
-	gl::drawStrokedRect(_cursor + _cursorOffset);
     
 	gl::popModelView();
 	gl::color(1.0f, 1.0f, 1.0f, 1.0f);

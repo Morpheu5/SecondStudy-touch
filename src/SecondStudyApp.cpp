@@ -201,13 +201,11 @@ void SecondStudy::TheApp::draw() {
 	_groupsMutex.lock();
 	for(int i = 0; i < _groups.size(); i++) {
 		for(auto trace : _groups[i]) {
-			float h = (i%7)/7.0f;
-			//console() << (i%7) << " :: " << h << endl;
 			if(trace->isVisible) {
-				gl::color(ColorAf(ColorModel::CM_HSV, h, 0.5f, 1.0f, 1.0f));
+				gl::color(1.0f, 1.0f, 1.0f, 0.25f);
 			} else {
-				float c = trace->lifespan() / 30.0f;
-				gl::color(ColorAf(ColorModel::CM_HSV, h, 0.5f, 1.0f, c));
+				float c = (trace->lifespan() / 10.0f) * 0.25f;
+				gl::color(1.0f, 1.0f, 1.0f, c);
 			}
 			if(trace->touchPoints.size() > 1) {
 				for(auto cursorIt = trace->touchPoints.begin(); cursorIt != prev(trace->touchPoints.end()); ++cursorIt) {
@@ -218,7 +216,6 @@ void SecondStudy::TheApp::draw() {
 				}
 			}
 			if(trace->isVisible) {
-				gl::color(ColorAf(ColorModel::CM_HSV, h, 0.5f, 1.0f, 0.25f));
 				gl::drawSolidCircle(tuioToWindow(trace->currentPosition()), 8.0f);
 				gl::drawSolidCircle(tuioToWindow(trace->currentPosition()), 50.0f);
 			} else {
@@ -418,6 +415,8 @@ void SecondStudy::TheApp::measureHasFinishedPlaying(int id) {
 		for(auto wit = sit->begin(); wit != sit->end(); ++wit) {
 			if((*wit)->id() == id && next(wit) != sit->end()) {
 				(*next(wit))->play();
+			} else if((*wit)->id() == id && next(wit) == sit->end()) {
+				(*sit->begin())->play();
 			}
 		}
 	}
