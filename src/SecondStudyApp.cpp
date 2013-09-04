@@ -19,11 +19,26 @@
 #include "DisconnectionGesture.h"
 #include "LongTapGesture.h"
 
+#include "Logger.h"
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
 
 void SecondStudy::TheApp::setup() {
+	auto filepath = getAppPath().remove_filename()/"logs";
+	if(!fs::exists(filepath)) {
+		fs::create_directories(filepath);
+	}
+	std::time_t t = std::time(nullptr);
+	stringstream fn;
+	fn << "SecondStudy_" << std::put_time(std::localtime(&t), "%Y-%m-%d_%H-%M-%S") << ".log";
+	filepath /= fn.str();
+	Logger::instance().init(filepath.string());
+	Logger::instance().log("SecondStudy starting up...");
+	
+	_loggerThread = thread(bind(&Logger::run, &(Logger::instance())));
+	
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -70,27 +85,34 @@ void SecondStudy::TheApp::setup() {
 	_gestureProcessor = thread(bind(&SecondStudy::TheApp::gestureProcessor, this));
 
 	go = false;
+	
+	Logger::instance().log("SecondStudy ready to roll.");
 }
 
 void SecondStudy::TheApp::shutdown() {
 	_gestureEngineShouldStop = true;
 	_gestureProcessorShouldStop = true;
+	Logger::instance().stop();
+	_loggerThread.join();
 	_gestureProcessor.join();
 	_gestureEngine.join();
 }
 
 void SecondStudy::TheApp::mouseDown( MouseEvent event ) {
+	
 }
 
 void SecondStudy::TheApp::keyDown(KeyEvent event) {
+	Logger::instance().log("TheApp::keyDown(" + to_string(event.getChar()) + ")");
+	
     switch(event.getChar()) {
         case KeyEvent::KEY_f: {
-        setFullScreen(!isFullScreen());
-        break;
-    }
+			setFullScreen(!isFullScreen());
+			break;
+		}
     default: {
-        break;
-    }
+			break;
+		}
     }
 }
 
@@ -101,7 +123,6 @@ void SecondStudy::TheApp::update() {
 	});
 	_sequencesMutex.unlock();
 	
-	//console() << gesture << " :: " << cursor << endl;
 	_tracesMutex.lock();
 	for(auto t : _traces) {
 		t.second->update();
@@ -158,7 +179,10 @@ void SecondStudy::TheApp::update() {
 
 void SecondStudy::TheApp::draw() {
 	// clear out the window with black
-	gl::clear( Color( 0, 0, 0 ) );
+	gl::clear(ColorAf(0.0f, 0.0f, 0.0f, 1.0f));
+	
+	gl::color(0.0f, 0.0f, 0.0f);
+	gl::drawSolidRect(getWindowBounds());
 	
 	gl::color(1.0f, 1.0f, 1.0f, 1.0f);
 	glLineWidth(5.0f);
@@ -227,6 +251,10 @@ void SecondStudy::TheApp::draw() {
 	_tracesMutex.unlock();
 }
 
+void SecondStudy::TheApp::resize() {
+	//gl::setViewport(getWindowBounds());
+}
+
 void SecondStudy::TheApp::gestureEngine() {
 	while(!_gestureEngineShouldStop) {
 		// this_thread::sleep_for(chrono::milliseconds(50));
@@ -272,6 +300,10 @@ void SecondStudy::TheApp::gestureProcessor() {
 					}
 					_widgetsMutex.unlock();
 				}
+				
+				stringstream ss;
+				ss << "TheApp::gestureProcessor TapGesture (x:" << tap->position().x << ", y:" << tap->position().y << ", widget_id:" << tap->widgetId() << ")";
+				Logger::instance().log(ss.str());
 			}
 
 			if(dynamic_pointer_cast<PinchGesture>(unknownGesture)) {
@@ -289,6 +321,10 @@ void SecondStudy::TheApp::gestureProcessor() {
                         w->rotateBy(pinch->angleDelta());
 					}
 					_widgetsMutex.unlock();
+					
+					stringstream ss;
+					ss << "TheApp::gestureProcessor PinchGesture (distance_delta:" << pinch->distanceDelta() << ", zoom_delta:" << pinch->zoomDelta() << ", angle_delta:" << pinch->angleDelta() << ", widget_id:" << pinch->widgetId() << ")";
+					Logger::instance().log(ss.str());
 				}
 			}
 			
@@ -306,6 +342,14 @@ void SecondStudy::TheApp::gestureProcessor() {
 				_widgetsMutex.unlock();
 				if(measure != nullptr) {
 					measure->processStroke(stroke->stroke());
+					
+					stringstream ss;
+					ss << "TheApp::gestureProcessor MusicStrokeGesture (points:[";
+					for(auto p : stroke->stroke().touchPoints) {
+						ss << "(" << p.getPos().x << "," << p.getPos().y << ")";
+					}
+					ss << "])";
+					Logger::instance().log(ss.str());
 				}
 			}
 			
@@ -360,12 +404,19 @@ void SecondStudy::TheApp::gestureProcessor() {
 					tsIt->splice(twIt, *fsIt, fsIt->begin(), next(fwIt));
 				}
 				_sequencesMutex.unlock();
+				
+				if(doTheSplice) {
+					stringstream ss;
+					ss << "TheApp::gestureProcessor ConnectionGesture (from:" << connection->fromWid() << " to:" << connection->toWid() << ")";
+					Logger::instance().log(ss.str());
+				}
 			}
 			
 			if(dynamic_pointer_cast<DisconnectionGesture>(unknownGesture)) {
 				shared_ptr<DisconnectionGesture> disc = dynamic_pointer_cast<DisconnectionGesture>(unknownGesture);
 				unsigned long fromWid = disc->fromWid();
 				unsigned long toWid = disc->toWid();
+				bool log = false;
 				_sequencesMutex.lock();
 				[&,this]() {
 					for(auto sit = _sequences.begin(); sit != _sequences.end(); ++sit) {
@@ -374,12 +425,19 @@ void SecondStudy::TheApp::gestureProcessor() {
 								list<shared_ptr<MeasureWidget>> newSeq(next(wit), sit->end());
 								_sequences.push_back(newSeq);
 								sit->erase(next(wit), sit->end());
+								log = true;
 								return;
 							}
 						}
 					}
 				}();
 				_sequencesMutex.unlock();
+				
+				if(log) {
+					stringstream ss;
+					ss << "TheApp::gestureProcessor DisconnectionGesture (from:" << disc->fromWid() << " to:" << disc->toWid() << ")";
+					Logger::instance().log(ss.str());
+				}
 			}
 			
 			if(dynamic_pointer_cast<LongTapGesture>(unknownGesture)) {
@@ -400,6 +458,10 @@ void SecondStudy::TheApp::gestureProcessor() {
 					_sequences.push_back(s);
 					_sequencesMutex.unlock();
 				}
+				
+				stringstream ss;
+				ss << "TheApp::gestureProcessor LongTapGesture (x:" << longtap->position().x << " y:" << longtap->position().y << " widget_id:" << longtap->widgetId() << ")";
+				Logger::instance().log(ss.str());
 			}
 
 			//console() << "unknownGesture.use_count() == " << unknownGesture.use_count() << endl;
@@ -408,8 +470,6 @@ void SecondStudy::TheApp::gestureProcessor() {
 }
 
 void SecondStudy::TheApp::measureHasFinishedPlaying(int id) {
-	console() << "Measure " << id << " has finished" << endl;
-	// TODO Select the next in the sequence and make it play
 	_sequencesMutex.lock();
 	for(auto sit = _sequences.begin(); sit != _sequences.end(); ++sit) {
 		for(auto wit = sit->begin(); wit != sit->end(); ++wit) {

@@ -257,8 +257,6 @@ void SecondStudy::MeasureWidget::processStroke(const TouchTrace &trace) {
     
 	TheApp *theApp = (TheApp *)App::get();
 	
-	// TODO Exclude strokes that start and finish outside of the actual box
-	
 	set<pair<int, int>> noteSet;
 	for(auto& q : trace.touchPoints) {
 		Vec2f p(theApp->tuioToWindow(q.getPos()));

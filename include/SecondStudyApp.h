@@ -21,7 +21,7 @@ namespace SecondStudy {
 	class MeasureWidget;
 	
 	class TouchTrace;
-
+	
 	class TheApp : public AppNative {
 		
 		vector<shared_ptr<ProgressiveGestureRecognizer>> _progressiveGRs;
@@ -58,6 +58,8 @@ namespace SecondStudy {
 		
 		list<list<shared_ptr<MeasureWidget>>> _sequences;
 		mutex _sequencesMutex;
+
+		thread _loggerThread;
 		
 	public:
 		void setup();
@@ -66,6 +68,7 @@ namespace SecondStudy {
         void keyDown(KeyEvent event);
 		void update();
 		void draw();
+		void resize();
 		
 		shared_ptr<osc::Sender> sender() { return _sender; }
 		

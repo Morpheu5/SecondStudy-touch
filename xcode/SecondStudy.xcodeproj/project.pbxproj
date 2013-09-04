@@ -91,6 +91,7 @@
 		2C7C4B5B17BE38FA0057FC57 /* TapGesture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TapGesture.cpp; path = ../src/TapGesture.cpp; sourceTree = "<group>"; };
 		2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PinchGesture.cpp; path = ../src/PinchGesture.cpp; sourceTree = "<group>"; };
 		2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MusicStrokeGesture.cpp; path = ../src/MusicStrokeGesture.cpp; sourceTree = "<group>"; };
+		2CCC11DD17D7494B00257A5E /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Logger.h; path = ../include/Logger.h; sourceTree = "<group>"; };
 		2D112904E7A04FC5BC5F71F0 /* OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscOutboundPacketStream.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscOutboundPacketStream.cpp; sourceTree = "<group>"; };
 		3F1ECCA5C9EE4DE6B820DA72 /* OscListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OscListener.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/OscListener.cpp; sourceTree = "<group>"; };
 		3FA9B9322235411B953866A0 /* TuioProfileBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TuioProfileBase.h; path = ../../cinder_0.8.5_mac/blocks/TUIO/include/TuioProfileBase.h; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 				A3703C1717AC2C8F00002544 /* TouchTrace.h */,
 				1155F1ACA17E465AB2B526DD /* SecondStudy_Prefix.pch */,
 				F2FF3139BADE486594B31873 /* Resources.h */,
+				2CCC11DD17D7494B00257A5E /* Logger.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";

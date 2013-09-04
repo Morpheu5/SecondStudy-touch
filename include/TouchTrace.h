@@ -14,8 +14,6 @@ namespace SecondStudy {
 	class TouchTrace {
 		int _lifespan;
 		
-		vector<TouchPoint> _buffer;
-
 	public:
 		enum class State {
 			TOUCH_DOWN,
