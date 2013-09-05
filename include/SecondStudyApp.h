@@ -56,6 +56,8 @@ namespace SecondStudy {
 
 		bool go;
 		
+		bool _marker;
+		
 		list<list<shared_ptr<MeasureWidget>>> _sequences;
 		mutex _sequencesMutex;
 

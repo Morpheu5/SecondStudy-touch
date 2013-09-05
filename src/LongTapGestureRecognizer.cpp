@@ -25,7 +25,7 @@ void SecondStudy::LongTapGestureRecognizer::processGroup(list<shared_ptr<TouchTr
 		Vec2f ap = theApp->tuioToWindow(a.getPos());
 		Vec2f bp = theApp->tuioToWindow(b.getPos());
 		
-		if(ap.distance(bp) < 5.0f && b.timestamp - a.timestamp >= 1.0f) {
+		if(ap.distance(bp) < 5.0f && b.timestamp - a.timestamp >= 0.5f) {
 			shared_ptr<LongTapGesture> tap = make_shared<LongTapGesture>(bp, trace->widgetId);
 			_gesturesMutex->lock();
 			_gestures->push_back(tap);

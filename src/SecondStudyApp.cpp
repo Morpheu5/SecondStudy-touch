@@ -41,6 +41,14 @@ void SecondStudy::TheApp::setup() {
 	
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
+	auto renderer = std::static_pointer_cast<RendererGl>(getRenderer());
+	//renderer->setAntiAliasing(0);
+	
+	stringstream ss;
+	ss << "AA set to " << renderer->getAntiAliasing();
+	Logger::instance().log(ss.str());
+	console() << ss.str() << endl;
 
 	_tuioClient.registerCursorAdded(this, &SecondStudy::TheApp::cursorAdded);
 	_tuioClient.registerCursorUpdated(this, &SecondStudy::TheApp::cursorUpdated);
@@ -50,8 +58,16 @@ void SecondStudy::TheApp::setup() {
 	
 	_sender = make_shared<osc::Sender>();
 	_sender->setup("localhost", 3000);
+	
+	Logger::instance().log("OSC Sender setup to localhost:3000");
 		
 	setFrameRate(FPS);
+
+	ss = stringstream();
+	ss << "Running at " << FPS << " fps";
+	Logger::instance().log(ss.str());
+	ss.clear();
+	
 	setWindowSize(640, 480);
 
 	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(0.30f * Vec2f(getWindowSize()), 5, 8);
@@ -85,6 +101,7 @@ void SecondStudy::TheApp::setup() {
 	_gestureProcessor = thread(bind(&SecondStudy::TheApp::gestureProcessor, this));
 
 	go = false;
+	_marker = false;
 	
 	Logger::instance().log("SecondStudy ready to roll.");
 }
@@ -103,12 +120,23 @@ void SecondStudy::TheApp::mouseDown( MouseEvent event ) {
 }
 
 void SecondStudy::TheApp::keyDown(KeyEvent event) {
-	Logger::instance().log("TheApp::keyDown(" + to_string(event.getChar()) + ")");
-	
     switch(event.getChar()) {
         case KeyEvent::KEY_f: {
 			setFullScreen(!isFullScreen());
+			
+			stringstream ss;
+			ss << "TheApp::keyDown " << (isFullScreen() ? "FullScreen" : "Window" ) << " (width:" << getWindowSize().x << ", height:" << getWindowSize().y << ")";
+			Logger::instance().log(ss.str());
 			break;
+		}
+		case KeyEvent::KEY_m: {
+			if(_marker) {
+				Logger::instance().log("---- STOP ----");
+				_marker = false;
+			} else {
+				Logger::instance().log("---- START ----");
+				_marker = true;
+			}
 		}
     default: {
 			break;
@@ -491,7 +519,7 @@ void SecondStudy::TheApp::cursorAdded(tuio::Cursor cursor) {
 		auto trace = t.second;
 		if(!trace->isVisible && !trace->isDead() && tuioToWindow(trace->currentPosition()).distance(tuioToWindow(cursor.getPos())) <= 50.0f) {
 			_traces[cursor.getSessionId()] = _traces[trace->getSessionId()];
-			joined = trace->getSessionId();
+			joined = trace->getSessionId(); // the old session id (therefore the old trace that has been resurrected)
 			_traces[cursor.getSessionId()]->resurrect();
 			_traces[cursor.getSessionId()]->cursorMove(cursor);
 			continued = true;
@@ -532,14 +560,25 @@ void SecondStudy::TheApp::cursorAdded(tuio::Cursor cursor) {
 		_groupsMutex.unlock();
 	}
 	_tracesMutex.unlock();
-    
+	
     for(auto &g : _groups) {
         for(auto pgr : _progressiveGRs) {
             pgr->processGroup(g);
         }
     }
-}
 	
+	stringstream ss;
+	ss	<< "TheApp::cursorAdded "
+		<< "(x:" << cursor.getPos().x
+		<< " y:" << cursor.getPos().y
+		<< " session_id:" << cursor.getSessionId()
+		<< " widget_id:" << _traces[cursor.getSessionId()]->widgetId
+		<< " new_trace:" << (continued ? "n" : "y")
+		<< " joined_trace:" << joined
+		<< ")";
+	Logger::instance().log(ss.str());
+}
+
 void SecondStudy::TheApp::cursorUpdated(tuio::Cursor cursor) {
 	go = true;
 	_tracesMutex.lock();
@@ -551,8 +590,17 @@ void SecondStudy::TheApp::cursorUpdated(tuio::Cursor cursor) {
             pgr->processGroup(g);
         }
     }
-}
 	
+	stringstream ss;
+	ss	<< "TheApp::cursorUpdated "
+		<< "(x:" << cursor.getPos().x
+		<< " y:" << cursor.getPos().y
+		<< " session_id:" << cursor.getSessionId()
+		<< " widget_id:" << _traces[cursor.getSessionId()]->widgetId
+		<< ")";
+	Logger::instance().log(ss.str());
+}
+
 void SecondStudy::TheApp::cursorRemoved(tuio::Cursor cursor) {
 	go = true;
 	_tracesMutex.lock();
@@ -565,6 +613,15 @@ void SecondStudy::TheApp::cursorRemoved(tuio::Cursor cursor) {
             pgr->processGroup(g);
         }
     }
+	
+	stringstream ss;
+	ss	<< "TheApp::cursorRemoved "
+		<< "(x:" << cursor.getPos().x
+		<< " y:" << cursor.getPos().y
+		<< " session_id:" << cursor.getSessionId()
+		<< " widget_id:" << _traces[cursor.getSessionId()]->widgetId
+		<< ")";
+	Logger::instance().log(ss.str());
 }
 
 int SecondStudy::TheApp::findGroupForTrace(shared_ptr<TouchTrace> trace) {
@@ -591,4 +648,4 @@ int SecondStudy::TheApp::findGroupForTrace(shared_ptr<TouchTrace> trace) {
 	return -1;
 }
 
-CINDER_APP_NATIVE( SecondStudy::TheApp, RendererGl )
+CINDER_APP_NATIVE( SecondStudy::TheApp, RendererGl(RendererGl::AA_MSAA_4) )

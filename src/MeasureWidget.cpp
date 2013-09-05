@@ -5,6 +5,8 @@
 
 #include "SecondStudyApp.h"
 
+#include "Logger.h"
+
 #include <set>
 
 using namespace ci;
@@ -43,6 +45,15 @@ SecondStudy::MeasureWidget::MeasureWidget() : Widget() {
 	notes = vector<vector<bool>>(1, vector<bool>(1, false));
 	
 	isPlaying = false;
+	
+	stringstream ss;
+	ss << "MeasureWidget::MeasureWidget (x:" << _position.x << " y:" << _position.y << " angle:" << _angle << " notes:[";
+	for(int n : _midiNotes) {
+		ss << n << ",";
+	}
+	ss.seekp(1, ios_base::end);
+	ss << "])";
+	Logger::instance().log(ss.str());
 }
 
 SecondStudy::MeasureWidget::MeasureWidget(Vec2f center, int rows, int columns) : Widget(),
@@ -78,6 +89,15 @@ _measureSize(pair<int, int>(columns, rows)) {
 	notes = vector<vector<bool>>(columns, vector<bool>(rows, false));
 	
 	isPlaying = false;
+	
+	stringstream ss;
+	ss << "MeasureWidget::MeasureWidget (x:" << _position.x << " y:" << _position.y << " angle:" << _angle << " notes:[";
+	for(auto it = _midiNotes.rbegin(); it != _midiNotes.rend(); ++it) {
+		ss << *it << ",";
+	}
+	ss.seekp(-1, ios_base::end);
+	ss << "])";
+	Logger::instance().log(ss.str());
 }
 
 void SecondStudy::MeasureWidget::draw() {
