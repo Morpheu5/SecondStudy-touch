@@ -26,6 +26,9 @@ using namespace ci::app;
 using namespace std;
 
 void SecondStudy::TheApp::setup() {
+	_screenZoom = 1.0f;
+	_screenOffset = Vec2f(0.0f, 0.0f);
+	
 	auto filepath = getAppPath().remove_filename()/"logs";
 	if(!fs::exists(filepath)) {
 		fs::create_directories(filepath);
@@ -70,17 +73,17 @@ void SecondStudy::TheApp::setup() {
 	
 	setWindowSize(640, 480);
 
-	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(0.30f * Vec2f(getWindowSize()), 5, 8);
-	shared_ptr<MeasureWidget> tw2 = make_shared<MeasureWidget>(0.70f * Vec2f(getWindowSize()), 5, 8);
+	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(Vec2f(1750.0f, 900.0f), 5, 8);
+	//shared_ptr<MeasureWidget> tw2 = make_shared<MeasureWidget>(0.70f * Vec2f(getWindowSize()), 5, 8);
 	_widgets.push_back(tw1);
-	_widgets.push_back(tw2);
+	//_widgets.push_back(tw2);
 	
 	list<shared_ptr<MeasureWidget>> s1;
 	s1.push_back(tw1);
-	list<shared_ptr<MeasureWidget>> s2;
-	s2.push_back(tw2);
+	//list<shared_ptr<MeasureWidget>> s2;
+	//s2.push_back(tw2);
 	_sequences.push_back(s1);
-	_sequences.push_back(s2);
+	//_sequences.push_back(s2);
 
 	_gesturesMutex = make_shared<mutex>();
 	_gestures = make_shared<list<shared_ptr<Gesture>>>();
@@ -215,6 +218,12 @@ void SecondStudy::TheApp::draw() {
 	gl::color(1.0f, 1.0f, 1.0f, 1.0f);
 	glLineWidth(5.0f);
 	
+	gl::pushModelView();
+	Matrix44f st;
+	//st.scale(Vec2f(_screenZoom, _screenZoom));
+	//st.translate(Vec3f(_screenOffset));
+	//gl::multModelView(st);
+	
 	_sequencesMutex.lock();
 	for(auto& s : _sequences) {
 		if(s.size() > 1) {
@@ -247,6 +256,8 @@ void SecondStudy::TheApp::draw() {
 		w->draw();
 	}
 	_widgetsMutex.unlock();
+	
+	gl::popModelView();
 		
 	// Let's draw the traces as they are being created
 	_tracesMutex.lock();
@@ -285,9 +296,8 @@ void SecondStudy::TheApp::resize() {
 
 void SecondStudy::TheApp::gestureEngine() {
 	while(!_gestureEngineShouldStop) {
-		// this_thread::sleep_for(chrono::milliseconds(50));
 		// PROGRESSIVEs can be dealt with using a signal. For now I'll keep the thing in the methods below
-
+		this_thread::sleep_for(chrono::milliseconds((long long)floor(1000.0f / FPS)));
 		// STATIC
 		list<shared_ptr<TouchTrace>> group;
 		_removedGroupsMutex.lock();
@@ -307,6 +317,7 @@ void SecondStudy::TheApp::gestureEngine() {
 
 void SecondStudy::TheApp::gestureProcessor() {
 	while(!_gestureProcessorShouldStop) {
+		this_thread::sleep_for(chrono::milliseconds((long long)floor(1000.0f / FPS)));
 		if(_gestures->size() > 0) {
 			_gesturesMutex->lock();
 			// This may very well be leaking stuff around. 'Tis no good.
@@ -353,6 +364,9 @@ void SecondStudy::TheApp::gestureProcessor() {
 					stringstream ss;
 					ss << "TheApp::gestureProcessor PinchGesture (distance_delta:" << pinch->distanceDelta() << ", zoom_delta:" << pinch->zoomDelta() << ", angle_delta:" << pinch->angleDelta() << ", widget_id:" << pinch->widgetId() << ")";
 					Logger::instance().log(ss.str());
+				} else {
+					_screenZoom += pinch->zoomDelta();
+					_screenOffset += pinch->distanceDelta();
 				}
 			}
 			
@@ -512,6 +526,7 @@ void SecondStudy::TheApp::measureHasFinishedPlaying(int id) {
 }
 	
 void SecondStudy::TheApp::cursorAdded(tuio::Cursor cursor) {
+	//console() << "Add" << endl;
 	bool continued = false;
 	int joined = -1;
 	_tracesMutex.lock();
@@ -580,6 +595,7 @@ void SecondStudy::TheApp::cursorAdded(tuio::Cursor cursor) {
 }
 
 void SecondStudy::TheApp::cursorUpdated(tuio::Cursor cursor) {
+	//console() << "Upd" << endl;
 	go = true;
 	_tracesMutex.lock();
 	_traces[cursor.getSessionId()]->cursorMove(cursor);
@@ -602,6 +618,7 @@ void SecondStudy::TheApp::cursorUpdated(tuio::Cursor cursor) {
 }
 
 void SecondStudy::TheApp::cursorRemoved(tuio::Cursor cursor) {
+	//console() << "Rem" << endl;
 	go = true;
 	_tracesMutex.lock();
 	_traces[cursor.getSessionId()]->addCursorUp(cursor);

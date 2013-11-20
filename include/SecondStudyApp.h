@@ -63,6 +63,9 @@ namespace SecondStudy {
 
 		thread _loggerThread;
 		
+		float _screenZoom;
+		Vec2f _screenOffset;
+		
 	public:
 		void setup();
 		void shutdown();

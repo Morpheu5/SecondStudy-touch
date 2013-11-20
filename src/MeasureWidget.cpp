@@ -36,11 +36,17 @@ SecondStudy::MeasureWidget::MeasureWidget() : Widget() {
 	_cursor += _boundingBox.getLowerLeft();
 	
 	// C major pentatonic
+	_midiNotes.push_back(81);
+	_midiNotes.push_back(79);
+	_midiNotes.push_back(76);
+	_midiNotes.push_back(74);
+	_midiNotes.push_back(72);
 	_midiNotes.push_back(69);
 	_midiNotes.push_back(67);
 	_midiNotes.push_back(64);
 	_midiNotes.push_back(62);
 	_midiNotes.push_back(60);
+
 
 	notes = vector<vector<bool>>(1, vector<bool>(1, false));
 	
@@ -80,6 +86,11 @@ _measureSize(pair<int, int>(columns, rows)) {
 	_cursor += _boundingBox.getLowerLeft();
 
 	// C major pentatonic
+	//_midiNotes.push_back(81);
+	//_midiNotes.push_back(79);
+	//_midiNotes.push_back(76);
+	//_midiNotes.push_back(74);
+	//_midiNotes.push_back(72);
 	_midiNotes.push_back(69);
 	_midiNotes.push_back(67);
 	_midiNotes.push_back(64);
@@ -138,15 +149,15 @@ void SecondStudy::MeasureWidget::draw() {
 		gl::drawSolidTriangle(_playIcon.getUpperLeft() + Vec2f(10.0f, 7.5f), _playIcon.getLowerLeft() + Vec2f(10.0f, -7.5f), _playIcon.getCenter() + Vec2f(10.0f, 0.0f));
 	}
 	gl::drawSolidRect(_playIcon);
-	
+
 	gl::color(0.5f, 0.75f, 1.0f, 0.5f);
 	gl::drawSolidCircle(_inletIcon.getCenter(), _inletIcon.getWidth()/2.0f);
 	
 	gl::color(1.0f, 0.75f, 0.5f, 0.5f);
 	gl::drawSolidCircle(_outletIcon.getCenter(), _outletIcon.getWidth()/2.0f);
-	
-	gl::color(1.0f, 1.0f, 1.0f, 0.5f);
-	gl::drawSolidRect(_cursor + _cursorOffset);
+
+	//gl::color(1.0f, 1.0f, 1.0f, 0.5f);
+	//gl::drawSolidRect(_cursor + _cursorOffset);
     
 	gl::popModelView();
 	gl::color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -203,13 +214,15 @@ void SecondStudy::MeasureWidget::tap(Vec2f p) {
 }
 
 void SecondStudy::MeasureWidget::play() {
-	app::timeline().apply(&_cursorOffset, Vec2f(0.0f, 0.0f), 0);
-	app::timeline().appendTo(&_cursorOffset, Vec2f(_boundingBox.getWidth() * (1.0f - 1.0f/notes.size()), 0.0f), MEASUREWIDGET_NOTELENGTH*(notes.size()-1));
-	app::timeline().appendTo(&_cursorOffset, Vec2f(0.0f, 0.0f), MEASUREWIDGET_NOTELENGTH, EaseInOutSine());
+	//app::timeline().apply(&_cursorOffset, Vec2f(0.0f, 0.0f), 0);
+	//app::timeline().appendTo(&_cursorOffset, Vec2f(_boundingBox.getWidth() * (1.0f - 1.0f/notes.size()), 0.0f), MEASUREWIDGET_NOTELENGTH*(notes.size()-1));
+	//app::timeline().appendTo(&_cursorOffset, Vec2f(0.0f, 0.0f), MEASUREWIDGET_NOTELENGTH, EaseInOutSine());
 	
 	for(int i = 0; i < notes.size(); i++) {
+		console() << "Programming note " << i << " at time " << app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*i << endl;
 		_cue = app::timeline().add( bind(&MeasureWidget::playNote, this, i), app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*i);
 	}
+	console() << "Programming finishing at time " << app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*(notes.size()) << endl;
 	_cue = app::timeline().add( bind(&MeasureWidget::finishedPlaying, this), app::timeline().getCurrentTime() + MEASUREWIDGET_NOTELENGTH*(notes.size()));
 	_cue->setAutoRemove(true);
 	_cue->setLoop(false);
@@ -227,6 +240,7 @@ void SecondStudy::MeasureWidget::stop() {
 }
 
 void SecondStudy::MeasureWidget::playNote(int n) {
+	console() << "Note: " << n << endl;
 	for(int i = 0; i < notes[n].size(); i++) {
 		if(notes[n][i]) {
 			TheApp *theApp = (TheApp *)App::get();
@@ -240,8 +254,8 @@ void SecondStudy::MeasureWidget::playNote(int n) {
 
 void SecondStudy::MeasureWidget::finishedPlaying() {
 	isPlaying = false;
-	TheApp *theApp = (TheApp *)App::get();
-	theApp->measureHasFinishedPlaying(_id);
+	//TheApp *theApp = (TheApp *)App::get();
+	//theApp->measureHasFinishedPlaying(_id);
 }
 
 void SecondStudy::MeasureWidget::moveBy(Vec2f v) {
@@ -257,15 +271,19 @@ void SecondStudy::MeasureWidget::rotateBy(float a) {
 }
 
 void SecondStudy::MeasureWidget::toggle(pair<int, int> note) {
+	console() << "Toggle: " << note.first << " " << note.second << " ";
 	if(note.first >= 0 && note.first < notes.size() && note.second >= 0 && note.second < notes[0].size()) {
 		if(notes[note.first][note.second]) {
+			console() << "ON to ";
 			notes[note.first][note.second] = false;
+			console() << (notes[note.first][note.second] ? "ON" : "OFF") << endl;
 		} else {
+			console() << "OFF to ";
 			for(auto a : notes[note.first]) {
 				a = false;
 			}
-			notes[note.first][note.second]
-			= true;
+			notes[note.first][note.second] = true;
+			console() << (notes[note.first][note.second] ? "ON" : "OFF") << endl;
 		}
 	}
 }
