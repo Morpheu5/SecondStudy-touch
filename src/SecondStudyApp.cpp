@@ -51,7 +51,6 @@ void SecondStudy::TheApp::setup() {
 	stringstream ss;
 	ss << "AA set to " << renderer->getAntiAliasing();
 	Logger::instance().log(ss.str());
-	console() << ss.str() << endl;
 
 	_tuioClient.registerCursorAdded(this, &SecondStudy::TheApp::cursorAdded);
 	_tuioClient.registerCursorUpdated(this, &SecondStudy::TheApp::cursorUpdated);
@@ -73,7 +72,7 @@ void SecondStudy::TheApp::setup() {
 	
 	setWindowSize(640, 480);
 
-	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(Vec2f(1750.0f, 900.0f), 5, 8);
+	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(Vec2f(1750.0f, 900.0f), 10, 16);
 	//shared_ptr<MeasureWidget> tw2 = make_shared<MeasureWidget>(0.70f * Vec2f(getWindowSize()), 5, 8);
 	_widgets.push_back(tw1);
 	//_widgets.push_back(tw2);
@@ -119,7 +118,17 @@ void SecondStudy::TheApp::shutdown() {
 }
 
 void SecondStudy::TheApp::mouseDown( MouseEvent event ) {
+	_signals = 1000;
+	_counter = 0;
 	
+	timeline().stepTo(0);
+	for(int i = 0; i < _signals; i++) {
+		timeline().add([this]() mutable {
+			_counter++;
+		}, i*1.0f);
+	}
+	timeline().stepTo(10000);
+	assert(_signals == _counter);
 }
 
 void SecondStudy::TheApp::keyDown(KeyEvent event) {
@@ -200,12 +209,6 @@ void SecondStudy::TheApp::update() {
 	}
      */
 	_groupsMutex.unlock();
-
-	// this_thread::sleep_for(chrono::milliseconds(50));
-
-	// Don't worry, this works. Unbelievable, though.
-	// console() << _groups.size() << " groups" << endl;
-	// console() << _traces.size() << " traces" << endl;
 }
 
 void SecondStudy::TheApp::draw() {
@@ -297,7 +300,7 @@ void SecondStudy::TheApp::resize() {
 void SecondStudy::TheApp::gestureEngine() {
 	while(!_gestureEngineShouldStop) {
 		// PROGRESSIVEs can be dealt with using a signal. For now I'll keep the thing in the methods below
-		this_thread::sleep_for(chrono::milliseconds((long long)floor(1000.0f / FPS)));
+		this_thread::sleep_for(chrono::milliseconds((long long)floor(100.0f / FPS)));
 		// STATIC
 		list<shared_ptr<TouchTrace>> group;
 		_removedGroupsMutex.lock();
@@ -317,7 +320,7 @@ void SecondStudy::TheApp::gestureEngine() {
 
 void SecondStudy::TheApp::gestureProcessor() {
 	while(!_gestureProcessorShouldStop) {
-		this_thread::sleep_for(chrono::milliseconds((long long)floor(1000.0f / FPS)));
+		this_thread::sleep_for(chrono::milliseconds((long long)floor(100.0f / FPS)));
 		if(_gestures->size() > 0) {
 			_gesturesMutex->lock();
 			// This may very well be leaking stuff around. 'Tis no good.

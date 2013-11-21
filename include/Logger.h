@@ -80,7 +80,7 @@ namespace SecondStudy {
 		
 		void run() {
 			while(_run) {
-				this_thread::sleep_for(chrono::milliseconds(500));
+				this_thread::sleep_for(chrono::milliseconds(1000));
 				_logQueueMutex.lock();
 				for(string s : _logQueue) {
 					_logFile << s;

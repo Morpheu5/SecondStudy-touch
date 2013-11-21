@@ -66,6 +66,9 @@ namespace SecondStudy {
 		float _screenZoom;
 		Vec2f _screenOffset;
 		
+		int _signals;
+		int _counter;
+		
 	public:
 		void setup();
 		void shutdown();
