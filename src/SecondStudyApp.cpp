@@ -35,7 +35,11 @@ void SecondStudy::TheApp::setup() {
 	}
 	std::time_t t = std::time(nullptr);
 	stringstream fn;
-	fn << "SecondStudy_" << std::put_time(std::localtime(&t), "%Y-%m-%d_%H-%M-%S") << ".log";
+#ifdef SINGLE_MODE
+	fn << "SecondStudy-single_" << std::put_time(std::localtime(&t), "%Y-%m-%d_%H-%M-%S") << ".log";
+#else
+	fn << "SecondStudy-multi_" << std::put_time(std::localtime(&t), "%Y-%m-%d_%H-%M-%S") << ".log";
+#endif
 	filepath /= fn.str();
 	Logger::instance().init(filepath.string());
 	Logger::instance().log("SecondStudy starting up...");
@@ -72,17 +76,16 @@ void SecondStudy::TheApp::setup() {
 	
 	setWindowSize(640, 480);
 
-	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(Vec2f(1750.0f, 900.0f), 10, 16);
-	//shared_ptr<MeasureWidget> tw2 = make_shared<MeasureWidget>(0.70f * Vec2f(getWindowSize()), 5, 8);
+#ifdef SINGLE_MODE
+	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(Vec2f(1920.0f, 1080.0f)/2, 21, 32);
+#else
+	shared_ptr<MeasureWidget> tw1 = make_shared<MeasureWidget>(Vec2f(300.0f, 300.0f), 11, 16);
+#endif
 	_widgets.push_back(tw1);
-	//_widgets.push_back(tw2);
 	
 	list<shared_ptr<MeasureWidget>> s1;
 	s1.push_back(tw1);
-	//list<shared_ptr<MeasureWidget>> s2;
-	//s2.push_back(tw2);
 	_sequences.push_back(s1);
-	//_sequences.push_back(s2);
 
 	_gesturesMutex = make_shared<mutex>();
 	_gestures = make_shared<list<shared_ptr<Gesture>>>();
@@ -349,6 +352,7 @@ void SecondStudy::TheApp::gestureProcessor() {
 			}
 
 			if(dynamic_pointer_cast<PinchGesture>(unknownGesture)) {
+#ifndef SINGLE_MODE
 				shared_ptr<PinchGesture> pinch = dynamic_pointer_cast<PinchGesture>(unknownGesture);
 				if(pinch->isOnWidget()) {
 					_widgetsMutex.lock();
@@ -371,6 +375,7 @@ void SecondStudy::TheApp::gestureProcessor() {
 					_screenZoom += pinch->zoomDelta();
 					_screenOffset += pinch->distanceDelta();
 				}
+#endif
 			}
 			
 			if(dynamic_pointer_cast<MusicStrokeGesture>(unknownGesture)) {
@@ -486,11 +491,12 @@ void SecondStudy::TheApp::gestureProcessor() {
 			}
 			
 			if(dynamic_pointer_cast<LongTapGesture>(unknownGesture)) {
+#ifndef SINGLE_MODE
 				shared_ptr<LongTapGesture> longtap = dynamic_pointer_cast<LongTapGesture>(unknownGesture);
 				if(!longtap->isOnWidget()) {
 					_widgetsMutex.lock();
 					Vec2f p = longtap->position();
-					auto w = make_shared<MeasureWidget>(p, 5, 8);
+					auto w = make_shared<MeasureWidget>(p, 11, 16);
 					Vec2f c = getWindowCenter();
 					float a = atan2(p.y-c.y, p.x-c.x);
 					w->angle(a - M_PI_2);
@@ -507,6 +513,7 @@ void SecondStudy::TheApp::gestureProcessor() {
 				stringstream ss;
 				ss << "TheApp::gestureProcessor LongTapGesture (x:" << longtap->position().x << " y:" << longtap->position().y << " widget_id:" << longtap->widgetId() << ")";
 				Logger::instance().log(ss.str());
+#endif
 			}
 
 			//console() << "unknownGesture.use_count() == " << unknownGesture.use_count() << endl;

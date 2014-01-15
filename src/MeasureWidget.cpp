@@ -35,18 +35,36 @@ SecondStudy::MeasureWidget::MeasureWidget() : Widget() {
 	_cursor = Rectf(Vec2f(0.0f, 0.0f), Vec2f(_noteBox.getWidth(), 10.0f));
 	_cursor += _boundingBox.getLowerLeft();
 	
-	// C major pentatonic
-	_midiNotes.push_back(81);
+#ifdef SINGLE_MODE
+	// 15x32
+	_midiNotes.push_back(87);
+	_midiNotes.push_back(84);
+	_midiNotes.push_back(82);
 	_midiNotes.push_back(79);
-	_midiNotes.push_back(76);
-	_midiNotes.push_back(74);
+	_midiNotes.push_back(77);
+	_midiNotes.push_back(75);
 	_midiNotes.push_back(72);
-	_midiNotes.push_back(69);
+	_midiNotes.push_back(70);
 	_midiNotes.push_back(67);
-	_midiNotes.push_back(64);
-	_midiNotes.push_back(62);
+	_midiNotes.push_back(65);
+	_midiNotes.push_back(63);
 	_midiNotes.push_back(60);
-
+	_midiNotes.push_back(58);
+	_midiNotes.push_back(55);
+	_midiNotes.push_back(53);
+#else
+	// 10x16
+	_midiNotes.push_back(75);
+	_midiNotes.push_back(72);
+	_midiNotes.push_back(70);
+	_midiNotes.push_back(67);
+	_midiNotes.push_back(65);
+	_midiNotes.push_back(63);
+	_midiNotes.push_back(60);
+	_midiNotes.push_back(58);
+	_midiNotes.push_back(55);
+	_midiNotes.push_back(53);
+#endif
 
 	notes = vector<vector<bool>>(1, vector<bool>(1, false));
 	
@@ -85,17 +103,43 @@ _measureSize(pair<int, int>(columns, rows)) {
 	_cursor = Rectf(Vec2f(0.0f, 0.0f), Vec2f(_noteBox.getWidth(), 5.0f));
 	_cursor += _boundingBox.getLowerLeft();
 
-	// C major pentatonic
-	_midiNotes.push_back(81);
+#ifdef SINGLE_MODE
+	// 21x32
+	_midiNotes.push_back(101);
+	_midiNotes.push_back(99);
+	_midiNotes.push_back(96);
+	_midiNotes.push_back(94);
+	_midiNotes.push_back(91);
+	_midiNotes.push_back(89);
+	_midiNotes.push_back(87);
+	_midiNotes.push_back(84);
+	_midiNotes.push_back(82);
 	_midiNotes.push_back(79);
-	_midiNotes.push_back(76);
-	_midiNotes.push_back(74);
+	_midiNotes.push_back(77);
+	_midiNotes.push_back(75);
 	_midiNotes.push_back(72);
-	_midiNotes.push_back(69);
+	_midiNotes.push_back(70);
 	_midiNotes.push_back(67);
-	_midiNotes.push_back(64);
-	_midiNotes.push_back(62);
+	_midiNotes.push_back(65);
+	_midiNotes.push_back(63);
 	_midiNotes.push_back(60);
+	_midiNotes.push_back(58);
+	_midiNotes.push_back(55);
+	_midiNotes.push_back(53);
+#else
+	// 11x16
+	_midiNotes.push_back(77);
+	_midiNotes.push_back(75);
+	_midiNotes.push_back(72);
+	_midiNotes.push_back(70);
+	_midiNotes.push_back(67);
+	_midiNotes.push_back(65);
+	_midiNotes.push_back(63);
+	_midiNotes.push_back(60);
+	_midiNotes.push_back(58);
+	_midiNotes.push_back(55);
+	_midiNotes.push_back(53);
+#endif
 	
 	notes = vector<vector<bool>>(columns, vector<bool>(rows, false));
 	
@@ -150,11 +194,13 @@ void SecondStudy::MeasureWidget::draw() {
 	}
 	gl::drawSolidRect(_playIcon);
 
+#ifndef SINGLE_MODE
 	gl::color(0.5f, 0.75f, 1.0f, 0.5f);
 	gl::drawSolidCircle(_inletIcon.getCenter(), _inletIcon.getWidth()/2.0f);
 	
 	gl::color(1.0f, 0.75f, 0.5f, 0.5f);
 	gl::drawSolidCircle(_outletIcon.getCenter(), _outletIcon.getWidth()/2.0f);
+#endif
 
 	gl::color(1.0f, 1.0f, 1.0f, 0.5f);
 	gl::drawSolidRect(_cursor + _cursorOffset);
@@ -170,10 +216,15 @@ bool SecondStudy::MeasureWidget::hit(Vec2f p) {
     
 	Vec3f tp3 = transform.inverted().transformPoint(Vec3f(p));
 	Vec2f tp(tp3.x, tp3.y);
+#ifdef SINGLE_MODE
+	return (_boundingBox * _scale).contains(tp)
+			|| (_playIcon * _scale).contains(tp);
+#else
 	return (_boundingBox * _scale).contains(tp)
 			|| (_playIcon * _scale).contains(tp)
 			|| (_inletIcon * _scale).contains(tp)
 			|| (_outletIcon * _scale).contains(tp);
+#endif
 }
 
 bool SecondStudy::MeasureWidget::hitInlet(Vec2f p) {

@@ -41,6 +41,45 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		937D7D8C08B94672BECC67DB /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = D0F843C1FD034602B2C3566D /* CinderApp.icns */; };
 		A346ECD8FD8A4417A02FE264 /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D112904E7A04FC5BC5F71F0 /* OscOutboundPacketStream.cpp */; };
+		A381D1B11886BABE00CA94D4 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = D0F843C1FD034602B2C3566D /* CinderApp.icns */; };
+		A381D1B31886BABE00CA94D4 /* SecondStudyApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8866C91BE3B24143A08D1377 /* SecondStudyApp.cpp */; };
+		A381D1B41886BABE00CA94D4 /* OscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61E7DA48C0814DD2BD75F65A /* OscBundle.cpp */; };
+		A381D1B51886BABE00CA94D4 /* OscListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F1ECCA5C9EE4DE6B820DA72 /* OscListener.cpp */; };
+		A381D1B61886BABE00CA94D4 /* OscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1371025E487249FE8D885697 /* OscMessage.cpp */; };
+		A381D1B71886BABE00CA94D4 /* OscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AF82F7CDED64D8F9D9BF401 /* OscSender.cpp */; };
+		A381D1B81886BABE00CA94D4 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17374499CD914344B1CA9A7B /* IpEndpointName.cpp */; };
+		A381D1B91886BABE00CA94D4 /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D112904E7A04FC5BC5F71F0 /* OscOutboundPacketStream.cpp */; };
+		A381D1BA1886BABE00CA94D4 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1F24B4D11E44476A9257433 /* OscPrintReceivedElements.cpp */; };
+		A381D1BB1886BABE00CA94D4 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 298CEBF3BDD5499E944C55B2 /* OscReceivedElements.cpp */; };
+		A381D1BC1886BABE00CA94D4 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21BD44AC707D4CAD85BDE3BF /* OscTypes.cpp */; };
+		A381D1BD1886BABE00CA94D4 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FBC6E3B35E841BFB123E9E5 /* NetworkingUtils.cpp */; };
+		A381D1BE1886BABE00CA94D4 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE89A0F6E4CD487F914861CE /* UdpSocket.cpp */; };
+		A381D1BF1886BABE00CA94D4 /* TuioClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C150B95298B848A392C3ACDD /* TuioClient.cpp */; };
+		A381D1C01886BABE00CA94D4 /* BoxWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6017BCE4C8005A5471 /* BoxWidget.cpp */; };
+		A381D1C11886BABE00CA94D4 /* PinchGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6117BCE4C8005A5471 /* PinchGestureRecognizer.cpp */; };
+		A381D1C21886BABE00CA94D4 /* TapGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6217BCE4C8005A5471 /* TapGestureRecognizer.cpp */; };
+		A381D1C31886BABE00CA94D4 /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6317BCE4C8005A5471 /* Widget.cpp */; };
+		A381D1C41886BABE00CA94D4 /* TouchTrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B4F17BE2DF10057FC57 /* TouchTrace.cpp */; };
+		A381D1C51886BABE00CA94D4 /* TouchPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B5117BE2F800057FC57 /* TouchPoint.cpp */; };
+		A381D1C61886BABE00CA94D4 /* MeasureWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B7D6D17BD0E41005A5471 /* MeasureWidget.cpp */; };
+		A381D1C71886BABE00CA94D4 /* MusicStrokeGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B4D17BE289D0057FC57 /* MusicStrokeGestureRecognizer.cpp */; };
+		A381D1C81886BABE00CA94D4 /* TapGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B5B17BE38FA0057FC57 /* TapGesture.cpp */; };
+		A381D1C91886BABE00CA94D4 /* PinchGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B5D17BE399F0057FC57 /* PinchGesture.cpp */; };
+		A381D1CA1886BABE00CA94D4 /* MusicStrokeGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4B5F17BE3B920057FC57 /* MusicStrokeGesture.cpp */; };
+		A381D1CB1886BABE00CA94D4 /* ConnectionGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3F9971D17BFBF1000F330FC /* ConnectionGesture.cpp */; };
+		A381D1CC1886BABE00CA94D4 /* ConnectionGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3F9972017BFC37900F330FC /* ConnectionGestureRecognizer.cpp */; };
+		A381D1CD1886BABE00CA94D4 /* DisconnectionGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AD4F717CF62C5006BC4FC /* DisconnectionGesture.cpp */; };
+		A381D1CE1886BABE00CA94D4 /* DisconnectionGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AD4FA17CF6348006BC4FC /* DisconnectionGestureRecognizer.cpp */; };
+		A381D1CF1886BABE00CA94D4 /* LongTapGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AD4FD17CF937A006BC4FC /* LongTapGesture.cpp */; };
+		A381D1D01886BABE00CA94D4 /* LongTapGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AD50117CF94C7006BC4FC /* LongTapGestureRecognizer.cpp */; };
+		A381D1D21886BABE00CA94D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		A381D1D31886BABE00CA94D4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0091D8F80E81B9330029341E /* OpenGL.framework */; };
+		A381D1D41886BABE00CA94D4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
+		A381D1D51886BABE00CA94D4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
+		A381D1D61886BABE00CA94D4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784AF0FF439BC000DE1D7 /* Accelerate.framework */; };
+		A381D1D71886BABE00CA94D4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */; };
+		A381D1D81886BABE00CA94D4 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B10FF439BC000DE1D7 /* AudioUnit.framework */; };
+		A381D1D91886BABE00CA94D4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		A3F9971E17BFBF1000F330FC /* ConnectionGesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3F9971D17BFBF1000F330FC /* ConnectionGesture.cpp */; };
 		A3F9972117BFC37900F330FC /* ConnectionGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3F9972017BFC37900F330FC /* ConnectionGestureRecognizer.cpp */; };
 		A845E87D7E2F415D9C308547 /* OscListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F1ECCA5C9EE4DE6B820DA72 /* OscListener.cpp */; };
@@ -109,7 +148,7 @@
 		8283049C11654BDE8A225495 /* OscException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscException.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscException.h; sourceTree = "<group>"; };
 		864B08CCEA3145E1A5302333 /* OscMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscMessage.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/OscMessage.h; sourceTree = "<group>"; };
 		8866C91BE3B24143A08D1377 /* SecondStudyApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = SecondStudyApp.cpp; path = ../src/SecondStudyApp.cpp; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* SecondStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecondStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* SecondStudy-single.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SecondStudy-single.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F465B6087A9432088F9647B /* OscPrintReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscPrintReceivedElements.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/osc/OscPrintReceivedElements.h; sourceTree = "<group>"; };
 		8FBC6E3B35E841BFB123E9E5 /* NetworkingUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = NetworkingUtils.cpp; path = ../../cinder_0.8.5_mac/blocks/OSC/src/ip/posix/NetworkingUtils.cpp; sourceTree = "<group>"; };
 		95C2AFA1C573440E84BD5BCE /* OscSender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscSender.h; path = ../../cinder_0.8.5_mac/blocks/OSC/src/OscSender.h; sourceTree = "<group>"; };
@@ -123,6 +162,8 @@
 		A3703C1917AC480800002544 /* Gesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = Gesture.h; path = ../include/Gesture.h; sourceTree = "<group>"; };
 		A3703C1A17AC483600002544 /* TapGesture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = TapGesture.h; path = ../include/TapGesture.h; sourceTree = "<group>"; };
 		A3703C1B17AC4ABE00002544 /* TapGestureRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = TapGestureRecognizer.h; path = ../include/TapGestureRecognizer.h; sourceTree = "<group>"; };
+		A381D1DD1886BABE00CA94D4 /* SecondStudy-multi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SecondStudy-multi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A381D1DE1886BABE00CA94D4 /* SecondStudy-multi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SecondStudy-multi-Info.plist"; path = "/Users/morpheu5/src/SecondStudy/xcode/SecondStudy-multi-Info.plist"; sourceTree = "<absolute>"; };
 		A3F9971C17BFBD5600F330FC /* ConnectionGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectionGesture.h; path = ../include/ConnectionGesture.h; sourceTree = "<group>"; };
 		A3F9971D17BFBF1000F330FC /* ConnectionGesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConnectionGesture.cpp; path = ../src/ConnectionGesture.cpp; sourceTree = "<group>"; };
 		A3F9971F17BFC23F00F330FC /* ConnectionGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectionGestureRecognizer.h; path = ../include/ConnectionGestureRecognizer.h; sourceTree = "<group>"; };
@@ -152,6 +193,21 @@
 				00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */,
 				00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */,
 				00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A381D1D11886BABE00CA94D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A381D1D21886BABE00CA94D4 /* Cocoa.framework in Frameworks */,
+				A381D1D31886BABE00CA94D4 /* OpenGL.framework in Frameworks */,
+				A381D1D41886BABE00CA94D4 /* CoreVideo.framework in Frameworks */,
+				A381D1D51886BABE00CA94D4 /* QTKit.framework in Frameworks */,
+				A381D1D61886BABE00CA94D4 /* Accelerate.framework in Frameworks */,
+				A381D1D71886BABE00CA94D4 /* AudioToolbox.framework in Frameworks */,
+				A381D1D81886BABE00CA94D4 /* AudioUnit.framework in Frameworks */,
+				A381D1D91886BABE00CA94D4 /* CoreAudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +286,8 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* SecondStudy.app */,
+				8D1107320486CEB800E47090 /* SecondStudy-single.app */,
+				A381D1DD1886BABE00CA94D4 /* SecondStudy-multi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,6 +301,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				A381D1DE1886BABE00CA94D4 /* SecondStudy-multi-Info.plist */,
 			);
 			name = SecondStudy;
 			sourceTree = "<group>";
@@ -432,9 +490,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* SecondStudy */ = {
+		8D1107260486CEB800E47090 /* SecondStudy-single */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "SecondStudy" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "SecondStudy-single" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -444,10 +502,28 @@
 			);
 			dependencies = (
 			);
-			name = SecondStudy;
+			name = "SecondStudy-single";
 			productInstallPath = "$(HOME)/Applications";
 			productName = SecondStudy;
-			productReference = 8D1107320486CEB800E47090 /* SecondStudy.app */;
+			productReference = 8D1107320486CEB800E47090 /* SecondStudy-single.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A381D1AF1886BABE00CA94D4 /* SecondStudy-multi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A381D1DA1886BABE00CA94D4 /* Build configuration list for PBXNativeTarget "SecondStudy-multi" */;
+			buildPhases = (
+				A381D1B01886BABE00CA94D4 /* Resources */,
+				A381D1B21886BABE00CA94D4 /* Sources */,
+				A381D1D11886BABE00CA94D4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SecondStudy-multi";
+			productInstallPath = "$(HOME)/Applications";
+			productName = SecondStudy;
+			productReference = A381D1DD1886BABE00CA94D4 /* SecondStudy-multi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -455,6 +531,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SecondStudy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -469,7 +548,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* SecondStudy */,
+				8D1107260486CEB800E47090 /* SecondStudy-single */,
+				A381D1AF1886BABE00CA94D4 /* SecondStudy-multi */,
 			);
 		};
 /* End PBXProject section */
@@ -480,6 +560,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				937D7D8C08B94672BECC67DB /* CinderApp.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A381D1B01886BABE00CA94D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A381D1B11886BABE00CA94D4 /* CinderApp.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,12 +611,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A381D1B21886BABE00CA94D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A381D1B31886BABE00CA94D4 /* SecondStudyApp.cpp in Sources */,
+				A381D1B41886BABE00CA94D4 /* OscBundle.cpp in Sources */,
+				A381D1B51886BABE00CA94D4 /* OscListener.cpp in Sources */,
+				A381D1B61886BABE00CA94D4 /* OscMessage.cpp in Sources */,
+				A381D1B71886BABE00CA94D4 /* OscSender.cpp in Sources */,
+				A381D1B81886BABE00CA94D4 /* IpEndpointName.cpp in Sources */,
+				A381D1B91886BABE00CA94D4 /* OscOutboundPacketStream.cpp in Sources */,
+				A381D1BA1886BABE00CA94D4 /* OscPrintReceivedElements.cpp in Sources */,
+				A381D1BB1886BABE00CA94D4 /* OscReceivedElements.cpp in Sources */,
+				A381D1BC1886BABE00CA94D4 /* OscTypes.cpp in Sources */,
+				A381D1BD1886BABE00CA94D4 /* NetworkingUtils.cpp in Sources */,
+				A381D1BE1886BABE00CA94D4 /* UdpSocket.cpp in Sources */,
+				A381D1BF1886BABE00CA94D4 /* TuioClient.cpp in Sources */,
+				A381D1C01886BABE00CA94D4 /* BoxWidget.cpp in Sources */,
+				A381D1C11886BABE00CA94D4 /* PinchGestureRecognizer.cpp in Sources */,
+				A381D1C21886BABE00CA94D4 /* TapGestureRecognizer.cpp in Sources */,
+				A381D1C31886BABE00CA94D4 /* Widget.cpp in Sources */,
+				A381D1C41886BABE00CA94D4 /* TouchTrace.cpp in Sources */,
+				A381D1C51886BABE00CA94D4 /* TouchPoint.cpp in Sources */,
+				A381D1C61886BABE00CA94D4 /* MeasureWidget.cpp in Sources */,
+				A381D1C71886BABE00CA94D4 /* MusicStrokeGestureRecognizer.cpp in Sources */,
+				A381D1C81886BABE00CA94D4 /* TapGesture.cpp in Sources */,
+				A381D1C91886BABE00CA94D4 /* PinchGesture.cpp in Sources */,
+				A381D1CA1886BABE00CA94D4 /* MusicStrokeGesture.cpp in Sources */,
+				A381D1CB1886BABE00CA94D4 /* ConnectionGesture.cpp in Sources */,
+				A381D1CC1886BABE00CA94D4 /* ConnectionGestureRecognizer.cpp in Sources */,
+				A381D1CD1886BABE00CA94D4 /* DisconnectionGesture.cpp in Sources */,
+				A381D1CE1886BABE00CA94D4 /* DisconnectionGestureRecognizer.cpp in Sources */,
+				A381D1CF1886BABE00CA94D4 /* LongTapGesture.cpp in Sources */,
+				A381D1D01886BABE00CA94D4 /* LongTapGestureRecognizer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C01FCF4B08A954540054247B /* Debug */ = {
+		A381D1DB1886BABE00CA94D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
@@ -542,22 +668,24 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = "SecondStudy-multi-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../cinder_0.8.5_mac/lib\"",
 				);
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
-				PRODUCT_NAME = SecondStudy;
+				PRODUCT_NAME = "SecondStudy-multi";
+				SDKROOT = macosx10.8;
 				SYMROOT = ./build;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		C01FCF4C08A954540054247B /* Release */ = {
+		A381D1DC1886BABE00CA94D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -568,6 +696,69 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SecondStudy_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "SecondStudy-multi-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../cinder_0.8.5_mac/lib\"",
+				);
+				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder.a\"";
+				PRODUCT_NAME = "SecondStudy-multi";
+				SDKROOT = macosx10.8;
+				STRIP_INSTALLED_PRODUCT = YES;
+				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SecondStudy_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					SINGLE_MODE,
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../cinder_0.8.5_mac/lib\"",
+				);
+				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
+				PRODUCT_NAME = "SecondStudy-single";
+				SDKROOT = macosx10.8;
+				SINGLE_MODE = Yes;
+				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_FAST_MATH = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SecondStudy_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = SINGLE_MODE;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -575,7 +766,9 @@
 					"\"$(SRCROOT)/../../cinder_0.8.5_mac/lib\"",
 				);
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder.a\"";
-				PRODUCT_NAME = SecondStudy;
+				PRODUCT_NAME = "SecondStudy-single";
+				SDKROOT = macosx10.8;
+				SINGLE_MODE = Yes;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
 				WRAPPER_EXTENSION = app;
@@ -586,7 +779,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = i386;
 				CINDER_PATH = ../../cinder_0.8.5_mac;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -596,6 +788,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../cinder_0.8.5_mac/blocks/OSC/src ../../cinder_0.8.5_mac/blocks/TUIO/include";
 			};
@@ -605,7 +798,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = i386;
 				CINDER_PATH = ../../cinder_0.8.5_mac;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -623,7 +815,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "SecondStudy" */ = {
+		A381D1DA1886BABE00CA94D4 /* Build configuration list for PBXNativeTarget "SecondStudy-multi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A381D1DB1886BABE00CA94D4 /* Debug */,
+				A381D1DC1886BABE00CA94D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "SecondStudy-single" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
