@@ -121,11 +121,11 @@ _measureSize(pair<int, int>(columns, rows)) {
 	_midiNotes.push_back(70);
 	_midiNotes.push_back(67);
 	_midiNotes.push_back(65);
-	_midiNotes.push_back(63);
-	_midiNotes.push_back(60);
-	_midiNotes.push_back(58);
-	_midiNotes.push_back(55);
-	_midiNotes.push_back(53);
+	_midiNotes.push_back(63);	// D#
+	_midiNotes.push_back(60);	// C
+	_midiNotes.push_back(58);	// A#
+	_midiNotes.push_back(55);	// G
+	_midiNotes.push_back(53);	// F
 #else
 	// 11x16
 	_midiNotes.push_back(77);
